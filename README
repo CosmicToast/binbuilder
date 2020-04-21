@@ -1,0 +1,3 @@
+Build scripts for https://minio.toast.cafe/bin/index.html
+If you want upx to be used, make sure you have a valid copy in this dir.
+Note that all of the docker images are built by hand when needed from the abyss docker repo.
