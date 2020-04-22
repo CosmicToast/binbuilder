@@ -4,6 +4,8 @@ type=c
 . ./options.sh
 cd "$name"
 
+export CFLAGS='-Os'
+export CXXFLAGS='-Os'
 export LDFLAGS='-static'
 if [ -z "$mod" ]
 then # custom handling
