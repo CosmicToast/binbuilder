@@ -5,13 +5,13 @@ type=c
 cd "$name"
 
 export CFLAGS='-Os'
-export CXXFLAGS='-Os'
+export CXXFLAGS='-static -Os'
 export LDFLAGS='-static'
 if [ -z "$mod" ]
 then # custom handling
 	. "../c/$name.sh"
 else # assume plain makefile project
-	bin="$mod"
+	[ -z "$bin" ] && bin="$mod"
 	make "$mod"
 fi
 
