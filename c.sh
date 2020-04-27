@@ -6,7 +6,7 @@ cd "$name"
 
 export CFLAGS='-Os'
 export CXXFLAGS='-static -Os'
-export LDFLAGS='-static'
+export LDFLAGS='-all-static -static'
 if [ -z "$mod" ]
 then # custom handling
 	. "../c/$name.sh"

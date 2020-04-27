@@ -21,12 +21,13 @@ for i; do
 	case "$i" in
 	# bundles
 	all)  $0 c go rust ;;
-	c)    $0 entr samurai ;;
+	c)    $0 entr jq samurai ;;
 	go)   $0 brpaste caddy chezmoi jump fzf ht mc micro rclone restic serve ;;
 	rust) $0 fd ;;
 
 	# c
 	entr)    c -r https://github.com/eradman/entr.git                  ;;
+	jq)      c -r https://github.com/stedolan/jq.git                   ;;
 	samurai) c -r https://github.com/michaelforney/samurai.git -m samu ;;
 
 	# go
