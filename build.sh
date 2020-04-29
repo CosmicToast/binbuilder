@@ -22,7 +22,7 @@ for i; do
 	# bundles
 	all)  $0 c go rust ;;
 	c)    $0 entr jq samurai ;;
-	go)   $0 brpaste caddy chezmoi jump fzf ht mc micro rclone restic serve ;;
+	go)   $0 brpaste caddy chezmoi jump fzf ht mc micro rclone restic scc serve ;;
 	rust) $0 fd ;;
 
 	# c
@@ -40,6 +40,7 @@ for i; do
 	micro)   go -r https://github.com/zyedidia/micro.git                     ;;
 	rclone)  go -r https://github.com/rclone/rclone.git      -m .            ;;
 	restic)  go -r https://github.com/restic/restic.git      -m ./cmd/restic ;;
+	scc)	 go -r https://github.com/boyter/scc.git         -m .            ;;
 	serve)   go -r https://github.com/syntaqx/serve.git      -m ./cmd/serve  ;;
 
 	# rust
