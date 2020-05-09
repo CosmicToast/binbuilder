@@ -22,7 +22,8 @@ for i; do
 	# bundles
 	all)  $0 c go rust ;;
 	c)    $0 entr jq samurai ;;
-	go)   $0 brpaste caddy chezmoi jump fzf ht mc micro rclone restic scc serve ;;
+	go)   $0 brpaste caddy chezmoi jump fzf ht mc micro rclone restic scc serve \
+	         yggdrasil yggdrasilctl;;
 	rust) $0 fd ;;
 
 	# c
@@ -42,6 +43,9 @@ for i; do
 	restic)  go -r https://github.com/restic/restic.git      -m ./cmd/restic ;;
 	scc)	 go -r https://github.com/boyter/scc.git         -m .            ;;
 	serve)   go -r https://github.com/syntaqx/serve.git      -m ./cmd/serve  ;;
+	# these are long, ok?
+	yggdrasil) go -r https://github.com/yggdrasil-network/yggdrasil-go.git -m ./cmd/yggdrasil ;;
+	yggdrasilctl) go -r https://github.com/yggdrasil-network/yggdrasil-go.git -m ./cmd/yggdrasilctl ;;
 
 	# rust
 	fd) rust -r https://github.com/sharkdp/fd -b fd ;;
