@@ -24,7 +24,7 @@ for i; do
 	c)    $0 entr jq samurai ;;
 	go)   $0 brpaste caddy chezmoi jump fzf ht mc micro rclone restic scc serve \
 	         yggdrasil yggdrasilctl;;
-	rust) $0 fd ;;
+	rust) $0 fd rsign ;;
 
 	# c
 	entr)    c -r https://github.com/eradman/entr.git                  ;;
@@ -48,7 +48,8 @@ for i; do
 	yggdrasilctl) go -r https://github.com/yggdrasil-network/yggdrasil-go.git -m ./cmd/yggdrasilctl ;;
 
 	# rust
-	fd) rust -r https://github.com/sharkdp/fd -b fd ;;
+	fd)    rust -r https://github.com/sharkdp/fd -b fd ;;
+	rsign) rust -r https://github.com/jedisct1/rsign2 -b rsign ;;
 	esac
 done
 
