@@ -14,4 +14,4 @@ fi
 # clean, only prefix
 mcli rm -r --force fafnir/bin/"$prefix"
 # upload prefix
-mcli cp -r bin/"$prefix" fafnir/bin
+mcli cp bin/"$prefix"/* fafnir/bin/"$prefix"/
