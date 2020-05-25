@@ -5,7 +5,7 @@ common() {
 	script=$1
 	image=$2
 	shift 2
-	docker run -it --rm -v "$PWD":/pwd -w /pwd --entrypoint $script $image "$@"
+	docker run -it --rm -v "$PWD":/pwd:Z -w /pwd --entrypoint $script $image "$@"
 }
 c() {
 	common /pwd/c.sh abyssos/abyss:clang "$@"
