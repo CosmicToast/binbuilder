@@ -38,12 +38,12 @@ for i; do
 	ht)      go -r https://github.com/nojima/httpie-go.git   -m ./cmd/ht     ;;
 	jump)    go -r https://github.com/gsamokovarov/jump.git  -m .            ;;
 	mc)      go -r https://github.com/minio/mc.git           -m .            ;;
-	micro)   go -r https://github.com/zyedidia/micro.git                     ;;
 	rclone)  go -r https://github.com/rclone/rclone.git      -m .            ;;
 	restic)  go -r https://github.com/restic/restic.git      -m ./cmd/restic ;;
 	scc)	 go -r https://github.com/boyter/scc.git         -m .            ;;
 	serve)   go -r https://github.com/syntaqx/serve.git      -m ./cmd/serve  ;;
 	# these are long, ok?
+	micro) go -r https://github.com/zyedidia/micro.git -m build-all -b micro ;;
 	yggdrasil) go -r https://github.com/yggdrasil-network/yggdrasil-go.git -m ./cmd/yggdrasil ;;
 	yggdrasilctl) go -r https://github.com/yggdrasil-network/yggdrasil-go.git -m ./cmd/yggdrasilctl ;;
 
