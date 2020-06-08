@@ -1,4 +1,4 @@
 #!/bin/sh
 ./configure
 bin=entr
-make $bin
+make $bin -j $(nproc)

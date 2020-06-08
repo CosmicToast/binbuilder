@@ -11,7 +11,7 @@ if [ -d "$mod" ]
 then # it's a real go module
 	go build -ldflags='-s -w' "$mod"
 else # it's a makefile target, $mod may be empty
-	make $mod
+	make $mod -j $(nproc)
 fi
 
 # wesmart

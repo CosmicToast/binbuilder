@@ -12,7 +12,7 @@ then # custom handling
 	. "../c/$name.sh"
 else # assume plain makefile project
 	[ -z "$bin" ] && bin="$mod"
-	make "$mod"
+	make "$mod" -j $(nproc)
 fi
 
 strip "$bin"
