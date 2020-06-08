@@ -41,7 +41,7 @@ else
 fi
 
 git clone "$repo" --reference "$cacher" "$name"
-ver="$(git -C $name describe --tags)"
+ver="$(git -C $name describe --tags --always)"
 
 # util
 handlebin() {
