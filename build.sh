@@ -21,7 +21,7 @@ for i; do
 	case "$i" in
 	# bundles
 	all)  $0 c go rust ;;
-	c)    $0 entr jq samurai ;;
+	c)    $0 entr jq mksh samurai ;;
 	go)   $0 brpaste caddy chezmoi jump fzf ht mc micro rclone restic scc serve \
 	         yggdrasil yggdrasilctl;;
 	rust) $0 fd rsign ;;
@@ -29,6 +29,7 @@ for i; do
 	# c
 	entr)    c -r https://github.com/eradman/entr.git                  ;;
 	jq)      c -r https://github.com/stedolan/jq.git                   ;;
+	mksh)    c -r https://github.com/MirBSD/mksh.git                   ;;
 	samurai) c -r https://github.com/michaelforney/samurai.git -m samu ;;
 
 	# go
