@@ -22,8 +22,8 @@ for i; do
 	# bundles
 	all)  $0 c go rust ;;
 	c)    $0 entr jq mksh samurai ;;
-	go)   $0 brpaste caddy chezmoi jump fzf ht mc micro rclone restic scc serve \
-	         yggdrasil yggdrasilctl;;
+	go)   $0 amfora brpaste caddy chezmoi jump fzf ht mc micro rclone restic scc \
+	         serve yggdrasil yggdrasilctl;;
 	rust) $0 fd rsign ;;
 
 	# c
@@ -33,6 +33,7 @@ for i; do
 	samurai) c -r https://github.com/michaelforney/samurai.git -m samu ;;
 
 	# go
+	amfora)  go -r https://github.com/makeworld-the-better-one/amfora -m .   ;;
 	caddy)   go -r https://github.com/caddyserver/caddy.git  -m ./cmd/caddy  ;;
 	chezmoi) go -r https://github.com/twpayne/chezmoi.git    -m .            ;;
 	fzf)     go -r https://github.com/junegunn/fzf.git       -m .            ;;
