@@ -11,7 +11,10 @@ if [ "$prefix" = "all" ]; then
 	exit 0
 fi
 
+# we multiarch now
+s3fix="$(uname -m)/$prefix"
+
 # clean, only prefix
-mcli rm -r --force fafnir/bin/"$prefix"
+mcli rm -r --force fafnir/bin/"$s3fix"
 # upload prefix
-mcli cp bin/"$prefix"/* fafnir/bin/"$prefix"/
+mcli cp bin/"$prefix"/* fafnir/bin/"$s3fix"/
