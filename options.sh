@@ -25,12 +25,13 @@ done
 case "$ID" in
 	alpine) apk --no-cache add git make  ;;
 	abyss) ;; # abyss:* is pre-made correctly
-	debian) ;;
-	*) echo "Unsupported Distro" && exit 1 ;;
+	debian) apt update; apt -y --no-install-recommends install git make ;; # slim for aarch64
+	# *) echo "Unsupported Distro" && exit 1 ;;
 esac
 
 # setup
-cache=/pwd/cache/git
+dir="$PWD"
+cache="$dir"/cache/git
 name="$(basename $repo .git)"
 cacher="$cache"/"$name".git
 if [ ! -d "$cacher" ]; then
@@ -45,11 +46,11 @@ ver="$(git -C $name describe --tags --always)"
 
 # util
 handlebin() {
-	[ "$pack" != "no" ] && /pwd/upx "$1"
-	cp "$1" /pwd/bin/"$type"/"$(basename $1)-$ver"
+	[ "$pack" != "no" ] && "$dir"/upx "$1"
+	cp "$1" "$dir"/bin/"$type"/"$(basename $1)-$ver"
 }
 clean() {
-	rm -r /pwd/"$name"
+	rm -r "$dir"/"$name"
 }
 
 mkdir -p bin/"$type"
