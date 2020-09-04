@@ -6,7 +6,7 @@ cd "$name"
 
 # build
 export CGO_ENABLED=0
-export GOPATH=/pwd/cache/go
+export GOPATH="$dir"/cache/go
 if [ -d "$mod" ]
 then # it's a real go module
 	go build -ldflags='-s -w' "$mod"

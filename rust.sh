@@ -6,7 +6,7 @@ type=rust
 cd "$name"
 
 # build
-export CARGO_HOME=/pwd/cache/rust
+export CARGO_HOME="$dir"/cache/rust
 export RUSTFLAGS='-C target-feature=+crt-static'
 if [ -z "$bin" ]
 then # build everything
