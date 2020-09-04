@@ -1,20 +1,41 @@
 #!/bin/sh -e
 
+# default runner
+[ -z "$RUNNER" ] && RUNNER=docker
+
 # utils
 common() {
-	script=$1
-	image=$2
-	shift 2
-	docker run -it --rm -v "$PWD":/pwd:Z -w /pwd --entrypoint $script $image "$@"
+	# disable upx if it's missing
+	[ -f "$PWD/upx" ] || set -- "$@" -u
+	# allow picking between docker and local runners
+	case "$RUNNER" in
+	docker) container docker "$@" ;;
+	podman) container podman "$@" ;;
+	shell) shell "$@" ;;
+	esac
 }
+
+container() {
+	cmd=$1
+	script=$2
+	image=$3
+	shift 3
+	$cmd run -it --rm -v "$PWD":/pwd:Z -w /pwd --entrypoint /pwd/"$script" $image "$@"
+}
+shell() {
+	script=$1
+	shift 2 # image not relevant
+	./"$script" "$@"
+}
+
 c() {
-	common /pwd/c.sh abyssos/abyss:clang "$@"
+	common c.sh abyssos/abyss:clang "$@"
 }
 go() {
-	common /pwd/go.sh abyssos/abyss:go "$@"
+	common go.sh abyssos/abyss:go "$@"
 }
 rust() {
-	common /pwd/rust.sh rust:alpine "$@"
+	common rust.sh rust:alpine "$@"
 }
 
 for i; do
