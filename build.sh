@@ -80,6 +80,7 @@ done
 # https://github.com/sharkdp/bat             -> no liquid-derive v0.20.0 on musl
 # https://github.com/ogham/exa               -> needs limits.sh
 # https://github.com/timvisee/ffsend         -> no darling_marro v0.10.2 on musl
+# https://github.com/chmln/handlr            -> no clap_derive v3.0.0-beta.1 on musl
 # https://github.com/sharkdp/hyperfine       -> no serde_derive v1.0.104 on musl
 # https://github.com/meilisearch/MeiliSearch -> no async-attributes v1.1.1 on musl
 # https://github.com/BurntSushi/ripgrep.git  -> no serde_derive v1.0.105 on musl
