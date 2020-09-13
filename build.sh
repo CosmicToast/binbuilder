@@ -56,7 +56,6 @@ for i; do
 	scdoc)   c -r https://git.sr.ht/~sircmpwn/scdoc -m scdoc           ;;
 
 	# go
-	amfora)  go -r https://github.com/makeworld-the-better-one/amfora -m .   ;;
 	caddy)   go -r https://github.com/caddyserver/caddy.git  -m ./cmd/caddy  ;;
 	chezmoi) go -r https://github.com/twpayne/chezmoi.git    -m .            ;;
 	fzf)     go -r https://github.com/junegunn/fzf.git       -m .            ;;
@@ -68,6 +67,7 @@ for i; do
 	scc)	 go -r https://github.com/boyter/scc.git         -m .            ;;
 	serve)   go -r https://github.com/syntaqx/serve.git      -m ./cmd/serve  ;;
 	# these are long, ok?
+	amfora) go -r https://github.com/makeworld-the-better-one/amfora -m amfora ;;
 	micro) go -r https://github.com/zyedidia/micro.git -m build-all -b micro ;;
 	yggdrasil) go -r https://github.com/yggdrasil-network/yggdrasil-go.git -m ./cmd/yggdrasil ;;
 	yggdrasilctl) go -r https://github.com/yggdrasil-network/yggdrasil-go.git -m ./cmd/yggdrasilctl ;;

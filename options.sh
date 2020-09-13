@@ -44,6 +44,10 @@ fi
 git clone "$repo" --reference "$cacher" "$name"
 ver="$(git -C $name describe --tags --always)"
 
+export VERSION="$ver"
+export COMMIT="$(git rev-parse --verify HEAD)"
+export BUILDER='https://minio.toast.cafe/bin/index.html'
+
 # util
 handlebin() {
 	[ "$pack" != "no" ] && "$dir"/upx "$1"
