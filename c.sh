@@ -15,6 +15,9 @@ else # assume plain makefile project
 	make "$mod" -j $(nproc)
 fi
 
-strip "$bin"
-handlebin "$bin"
+# scripts may set multiple bin
+for f in $bin; do
+	strip "$f"
+	handlebin "$f"
+done
 clean

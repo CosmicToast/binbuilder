@@ -11,7 +11,8 @@ LDFLAGS='-Wl,-O1 -Wl,--as-needed'
 
 LIBS="pixman-1 wayland-protocols wayland-client wayland-cursor xkbcommon fontconfig tllist fcft libffi"
 CFLAGS="$CFLAGS -c -I. -std=c17 -D_POSIX_C_SOURCE=200809L -D_GNU_SOURCE=200809L $(pkgconf --static --cflags $LIBS)"
-LDFLAGS="$LDFLAGS --static $(pkgconf --static --libs $LIBS)"
+LDFLAGS="$LDFLAGS --static"
+LIBFLAGS="$(pkgconf --static --libs $LIBS)"
 
 SCANNER="$(pkgconf --variable=wayland_scanner wayland-scanner)"
 PROTDIR="$(pkgconf --variable=pkgdatadir wayland-protocols)"
@@ -26,11 +27,12 @@ for f in $PROTS; do
 done
 
 # compile
-rm client.c
 find . -name '*.c' -exec "$CC" $CFLAGS '{}' -o '{}.o' \;
 
 # link
 # WARNING: ORDER IS IMPORTANT
-"$CC" *.o $LDFLAGS -o foot
+"$CC" $LDFLAGS client.c.o log.c.o xmalloc.c.o -o footclient
+rm client.c.o
+"$CC" *.o $LDFLAGS $LIBFLAGS -o foot
 
-bin=foot
+bin='foot footclient'
