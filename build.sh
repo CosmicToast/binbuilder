@@ -28,7 +28,7 @@ shell() {
 	./"$script" "$@"
 }
 
-c() {
+cc() {
 	common c.sh abyssos/abyss:clang "$@"
 }
 go() {
@@ -48,12 +48,12 @@ for i; do
 	rust) $0 fd rsign ;;
 
 	# c
-	entr)    c -r https://github.com/eradman/entr.git                  ;;
-	foot)    c -r https://codeberg.org/dnkl/foot                       ;;
-	jq)      c -r https://github.com/stedolan/jq.git                   ;;
-	mksh)    c -r https://github.com/MirBSD/mksh.git                   ;;
-	samurai) c -r https://github.com/michaelforney/samurai.git -m samu ;;
-	scdoc)   c -r https://git.sr.ht/~sircmpwn/scdoc -m scdoc           ;;
+	entr)    cc -r https://github.com/eradman/entr.git                  ;;
+	foot)    cc -r https://codeberg.org/dnkl/foot                       ;;
+	jq)      cc -r https://github.com/stedolan/jq.git                   ;;
+	mksh)    cc -r https://github.com/MirBSD/mksh.git                   ;;
+	samurai) cc -r https://github.com/michaelforney/samurai.git -m samu ;;
+	scdoc)   cc -r https://git.sr.ht/~sircmpwn/scdoc -m scdoc           ;;
 
 	# go
 	caddy)   go -r https://github.com/caddyserver/caddy.git  -m ./cmd/caddy  ;;
