@@ -42,7 +42,7 @@ for i; do
 	case "$i" in
 	# bundles
 	all)  $0 c go rust ;;
-	c)    $0 entr foot jq mksh samurai scdoc ;;
+	c)    $0 entr foot htop jq mksh samurai scdoc ;;
 	go)   $0 amfora brpaste caddy chezmoi jump fzf ht mc micro rclone restic scc \
 	         serve yggdrasil yggdrasilctl;;
 	rust) $0 fd rsign ;;
@@ -50,6 +50,7 @@ for i; do
 	# c
 	entr)    cc -r https://github.com/eradman/entr.git                  ;;
 	foot)    cc -r https://codeberg.org/dnkl/foot                       ;;
+	htop)    cc -r https://github.com/htop-dev/htop                     ;;
 	jq)      cc -r https://github.com/stedolan/jq.git                   ;;
 	mksh)    cc -r https://github.com/MirBSD/mksh.git                   ;;
 	samurai) cc -r https://github.com/michaelforney/samurai.git -m samu ;;
