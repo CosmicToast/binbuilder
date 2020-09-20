@@ -30,18 +30,27 @@ case "$ID" in
 esac
 
 # setup
+git() {
+	command git "$@"
+} >&2
+cclone() {
+	# $1 is repo
+	name="$(basename $repo .git)"
+	cacher="$cache"/"$name".git
+	if [ ! -d "$cacher" ]; then
+		mkdir -p "$cache"
+		git clone --mirror "$1" "$cacher"
+	else
+		git -C "$cacher" fetch --all -pP
+	fi
+
+	git clone "$1" --reference "$cacher" "$name"
+	echo "$name"
+}
+
 dir="$PWD"
 cache="$dir"/cache/git
-name="$(basename $repo .git)"
-cacher="$cache"/"$name".git
-if [ ! -d "$cacher" ]; then
-	mkdir -p "$cache"
-	git clone --mirror "$repo" "$cacher"
-else
-	git -C "$cacher" fetch --all -pP
-fi
-
-git clone "$repo" --reference "$cacher" "$name"
+name="$(cclone $repo)"
 ver="$(git -C $name describe --tags --always)"
 
 export VERSION="$ver"
