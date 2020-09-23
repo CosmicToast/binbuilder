@@ -7,22 +7,18 @@ cd "$name"
 
 # build
 export CARGO_HOME="$dir"/cache/rust
-export RUSTFLAGS='-C target-feature=+crt-static'
-if [ -z "$bin" ]
-then # build everything
-	cargo build --release --bins
-else # build specific bin
-	cargo build --release --bin "$bin"
+export CARGO_BUILD_TARGET=$(uname -m)-unknown-linux-musl
+cargo build --release --bins
+
+if [ -z "$bin" ]; then
+	bin="$(find -type f -executable)"
+	for b in $bin; do
+		handlebin "$b"
+	done
+else
+	for b in $bin; do
+		handlebin "$(find -type f -executable -name $b)"
+	done
 fi
 
-# compress and deploy
-if [ -z "$bin" ]
-then # loop over all bins to detect
-	for f in ./target/release/*; do
-		[ -f "$f" ] && [ -x "$f" ] || continue
-		handlebin "$f"
-	done
-else # just do it for the one bin
-	handlebin ./target/release/"$bin"
-fi
 clean

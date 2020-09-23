@@ -23,17 +23,14 @@ done
 # common deps
 . /etc/os-release
 case "$ID" in
-	alpine) apk --no-cache add git make  ;;
-	abyss) ;; # abyss:* is pre-made correctly
-	debian) apt update; apt -y --no-install-recommends install git make ;; # slim for aarch64
-	# *) echo "Unsupported Distro" && exit 1 ;;
 esac
 
 # setup
-git() {
-	command git "$@"
-} >&2
 cclone() {
+	git() {
+		command git "$@"
+	} >&2
+
 	# $1 is repo
 	name="$(basename $repo .git)"
 	cacher="$cache"/"$name".git

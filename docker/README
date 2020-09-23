@@ -1,0 +1,8 @@
+Docker definitions for the bin builder.
+Everything is based on abyss (and requires a working abyssos/abyss:latest copy, get that separately).
+Exception: rust is based on the official rust image (debian); this is because rust is shit and unironically works better when you cross compile (as opposed to build natively for musl).
+
+Run ./docker.sh in this directory once you have a working abyssos/abyss:latest and you will get:
+- binbuilder:c
+- binbuilder:go
+- binbuilder:rust

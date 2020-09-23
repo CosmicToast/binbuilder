@@ -29,13 +29,13 @@ shell() {
 }
 
 cc() {
-	common c.sh abyssos/abyss:clang "$@"
+	common c.sh binbuilder:c "$@"
 }
 go() {
-	common go.sh abyssos/abyss:go "$@"
+	common go.sh binbuilder:go "$@"
 }
 rust() {
-	common rust.sh rust:alpine "$@"
+	common rust.sh binbuilder:rust "$@"
 }
 
 for i; do
@@ -43,14 +43,14 @@ for i; do
 	# bundles
 	all)  $0 c go rust ;;
 	c)    $0 entr foot htop jq mksh samurai scdoc ;;
-	go)   $0 amfora brpaste caddy chezmoi jump fzf ht mc micro rclone restic scc \
+	go)   $0 amfora caddy chezmoi jump fzf ht mc micro rclone restic scc \
 	         serve yggdrasil yggdrasilctl;;
-	rust) $0 fd rsign ;;
+	rust) $0 bat exa fd rg rsign ;;
 
 	# c
 	entr)    cc -r https://github.com/eradman/entr.git                  ;;
-	foot)    cc -r https://codeberg.org/dnkl/foot                       ;;
-	htop)    cc -r https://github.com/htop-dev/htop                     ;;
+	foot)    cc -r https://codeberg.org/dnkl/foot.git                   ;;
+	htop)    cc -r https://github.com/htop-dev/htop.git                 ;;
 	jq)      cc -r https://github.com/stedolan/jq.git                   ;;
 	mksh)    cc -r https://github.com/MirBSD/mksh.git                   ;;
 	samurai) cc -r https://github.com/michaelforney/samurai.git -m samu ;;
@@ -74,19 +74,19 @@ for i; do
 	yggdrasilctl) go -r https://github.com/yggdrasil-network/yggdrasil-go.git -m ./cmd/yggdrasilctl ;;
 
 	# rust
-	fd)    rust -r https://github.com/sharkdp/fd -b fd ;;
-	rsign) rust -r https://github.com/jedisct1/rsign2 -b rsign ;;
+	bat)   rust -r https://github.com/sharkdp/bat.git        -b bat   ;;
+	exa)   rust -r https://github.com/ogham/exa.git          -b exa   ;;
+	fd)    rust -r https://github.com/sharkdp/fd.git         -b fd    ;;
+	rg)    rust -r https://github.com/BurntSushi/ripgrep.git -b rg    ;;
+	rsign) rust -r https://github.com/jedisct1/rsign2.git    -b rsign ;;
 	esac
 done
 
 # these repos are excluded, reasons attached
-# https://github.com/sharkdp/bat             -> no liquid-derive v0.20.0 on musl
-# https://github.com/ogham/exa               -> needs limits.sh
 # https://github.com/timvisee/ffsend         -> no darling_marro v0.10.2 on musl
 # https://github.com/chmln/handlr            -> no clap_derive v3.0.0-beta.1 on musl
 # https://github.com/sharkdp/hyperfine       -> no serde_derive v1.0.104 on musl
 # https://github.com/meilisearch/MeiliSearch -> no async-attributes v1.1.1 on musl
-# https://github.com/BurntSushi/ripgrep.git  -> no serde_derive v1.0.105 on musl
 # https://github.com/starship/starship       -> no pest_derive v2.1.0 on musl
 # https://github.com/XAMPPRocky/tokei        -> no const-random-macro v0.1.8 on musl
 # https://github.com/watchexec/watchexec     -> no darling_macro v0.10.2 on musl
