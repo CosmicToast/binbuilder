@@ -5,3 +5,4 @@ RUN rustup target add $(uname -m)-unknown-linux-musl
 RUN apt-get -y update && apt-get -y install \
 	clang
 ENV CC=clang CFLAGS="-Os -pipe" CXXFLAGS="-Os -pipe" LDFLAGS="-Wl,-O1 -Wl,--as-needed"
+RUN cargo install sccache && rm -rf /usr/local/cargo/registry /usr/local/cargo/git
