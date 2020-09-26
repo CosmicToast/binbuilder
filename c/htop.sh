@@ -1,5 +1,5 @@
 #!/bin/sh
-apk add ncurses-dev autoconf automake
+apk add ncurses-dev
 ./autogen.sh
 ./configure
 make -j $(nproc)

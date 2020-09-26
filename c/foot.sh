@@ -3,7 +3,7 @@
 # install libs
 apk add pixman-dev wayland-dev wayland-protocols wayland-protocols-dev libxkbcommon-dev fontconfig-dev \
 	tllist fcft-dev \
-	libffi-dev bzip2-dev expat-dev linux-dev
+	libffi-dev bzip2-dev expat-dev
 
 CC=clang
 CFLAGS='-Os -pipe -fomit-frame-pointer'
