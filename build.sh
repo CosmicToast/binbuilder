@@ -49,10 +49,10 @@ for i; do
 
 	# c
 	entr)    cc -r https://github.com/eradman/entr.git                  ;;
-	foot)    cc -r https://codeberg.org/dnkl/foot.git                   ;;
+	foot)    cc -r https://codeberg.org/dnkl/foot.git -u                ;;
 	htop)    cc -r https://github.com/htop-dev/htop.git                 ;;
 	jq)      cc -r https://github.com/stedolan/jq.git                   ;;
-	mksh)    cc -r https://github.com/MirBSD/mksh.git                   ;;
+	mksh)    cc -r https://github.com/MirBSD/mksh.git -u                ;;
 	samurai) cc -r https://github.com/michaelforney/samurai.git -m samu ;;
 	scdoc)   cc -r https://git.sr.ht/~sircmpwn/scdoc -m scdoc           ;;
 
