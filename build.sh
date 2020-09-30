@@ -79,6 +79,12 @@ for i; do
 	fd)    rust -r https://github.com/sharkdp/fd.git         -b fd    ;;
 	rg)    rust -r https://github.com/BurntSushi/ripgrep.git -b rg    ;;
 	rsign) rust -r https://github.com/jedisct1/rsign2.git    -b rsign ;;
+
+	# manual
+	# packages that aren't bult in "all" builds
+	# this means it's either not worth distributing them regularly
+	# or they're "testing" packages
+	duf) go -r https://github.com/muesli/duf.git -m .
 	esac
 done
 
