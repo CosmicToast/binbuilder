@@ -1,20 +1,26 @@
 #!/bin/sh
-sudo chown -R toast:toast bin
+case "$1" in
+	all) "$0" c/ go/ rust/ ;;
+	'') exit 1 ;;
+esac
 
-prefix="$1"
-[ -z "$prefix" ] && exit 1
+mc() {
+	command mc -q "$@"
+}
 
-if [ "$prefix" = "all" ]; then
-	$0 c
-	$0 go
-	$0 rust
-	exit 0
-fi
+base=fafnir/bin/$(uname -m)
+for pattern; do
+	# we know we don't have spaces in the paths
+	for f in $(find bin -type f -path "*$pattern*"); do
+		# what a mess lmao
+		ff=${f#*/}
+		oldp=$base/${ff%%-*}-
+		new=$base/$ff
+		
+		oldk=$(mc ls --json $oldp | jq -r .key)
+		old=$base/${ff%/*}/$oldk
 
-# we multiarch now
-s3fix="$(uname -m)/$prefix"
-
-# clean, only prefix
-mcli rm -r --force fafnir/bin/"$s3fix"
-# upload prefix
-mcli cp bin/"$prefix"/* fafnir/bin/"$s3fix"/
+		mc rm -q $old >/dev/null
+		mc cp -q $f $new
+	done
+done
