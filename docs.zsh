@@ -6,9 +6,11 @@
 # $2 is page name
 # $3 is manual section
 
-prefix='manuals/man'
+dir='manuals'
+prefix="$dir/man"
 
 pre() {
+	echo "$2.$3"
 	mkdir -p "$prefix$3"
 }
 
@@ -61,3 +63,6 @@ bare https://raw.githubusercontent.com/michaelforney/samurai/master/samu.1 samu 
 # scdoc
 scd https://git.sr.ht/~sircmpwn/scdoc/blob/master/scdoc.1.scd scdoc 1
 scd https://git.sr.ht/~sircmpwn/scdoc/blob/master/scdoc.5.scd scdoc 5
+
+# ---- compress!
+find "$dir" -type f -exec gzip '{}' +
