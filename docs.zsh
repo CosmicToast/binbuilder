@@ -49,6 +49,9 @@ bare https://raw.githubusercontent.com/stedolan/jq/master/jq.1.prebuilt jq 1
 bare https://raw.githubusercontent.com/MirBSD/mksh/master/lksh.1 lksh 1
 bare https://raw.githubusercontent.com/MirBSD/mksh/master/mksh.1 mksh 1
 
+# rc
+bare https://raw.githubusercontent.com/muennich/rc/master/rc.1 rc 1
+
 # rclone
 bare https://raw.githubusercontent.com/rclone/rclone/master/rclone.1 rclone 1
 
