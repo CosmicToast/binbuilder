@@ -89,6 +89,7 @@ for i; do
 	hyperfine) rust -r https://github.com/sharkdp/hyperfine.git -b hyperfine ;;
 	rc) cc -r https://github.com/muennich/rc -u ;;
 	sd) rust -r https://github.com/chmln/sd.git -b sd ;;
+	sk) rust -r https://github.com/lotabout/skim.git -b sk ;;
 	watchexec) rust -r https://github.com/watchexec/watchexec.git -b watchexec ;;
 	#   - servers / occasional
 	caddy) go -r https://github.com/caddyserver/caddy.git -m ./cmd/caddy ;;
