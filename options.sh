@@ -7,14 +7,15 @@ mod=  # module path, mostly useful for rust
 name= # this will be autodetected
 repo= # required, for obvious reasons
 pack= # set flag to disable
-# type should be pre-set in the main script
+# type should be pre-set in the main script, but can be overriden
 
-while getopts b:m:n:r:u name
+while getopts b:m:n:r:t:u name
 do
 	case $name in
 	b) bin="$OPTARG";;
 	m) mod="$OPTARG";;
 	r) repo="$OPTARG";;
+	t) type="$OPTARG";;
 	u) pack=no ;;
 	?) exit 2;;
 	esac

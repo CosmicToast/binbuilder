@@ -83,20 +83,20 @@ for i; do
 	# this means it's either not worth distributing them regularly
 	# or they're "testing" packages
 	#   - testing
-	duf) go -r https://github.com/muesli/duf.git -m . ;;
-	gotop) go -r https://github.com/xxxserxxx/gotop.git -m ./cmd/gotop ;;
-	handlr) rust -r https://github.com/chmln/handlr.git -b handlr ;;
-	hyperfine) rust -r https://github.com/sharkdp/hyperfine.git -b hyperfine ;;
-	rc) cc -r https://github.com/muennich/rc -u ;;
-	sd) rust -r https://github.com/chmln/sd.git -b sd ;;
-	sk) rust -r https://github.com/lotabout/skim.git -b sk ;;
-	watchexec) rust -r https://github.com/watchexec/watchexec.git -b watchexec ;;
+	duf) go -t testing -r  https://github.com/muesli/duf.git -m . ;;
+	gotop) go -t testing -r https://github.com/xxxserxxx/gotop.git -m ./cmd/gotop ;;
+	handlr) rust -t testing -r https://github.com/chmln/handlr.git -b handlr ;;
+	hyperfine) rust -t testing -r https://github.com/sharkdp/hyperfine.git -b hyperfine ;;
+	rc) cc -t testing -r https://github.com/muennich/rc -u ;;
+	sd) rust -t testing -r https://github.com/chmln/sd.git -b sd ;;
+	sk) rust -t testing -r https://github.com/lotabout/skim.git -b sk ;;
+	watchexec) rust -t testing -r https://github.com/watchexec/watchexec.git -b watchexec ;;
 	#   - servers / occasional
-	caddy) go -r https://github.com/caddyserver/caddy.git -m ./cmd/caddy ;;
-	echoip) go -r https://github.com/mpolden/echoip.git -m ./cmd/echoip ;;
-	meilisearch)  rust -r https://github.com/meilisearch/MeiliSearch.git -b meilisearch ;;
-	minio) go -r https://github.com/minio/minio.git -m . ;;
-	yggdrasil) go -r https://github.com/yggdrasil-network/yggdrasil-go.git -m ./cmd/yggdrasil ;;
+	caddy) go -t server -r https://github.com/caddyserver/caddy.git -m ./cmd/caddy ;;
+	echoip) go -t server -r https://github.com/mpolden/echoip.git -m ./cmd/echoip ;;
+	meilisearch)  rust -t server -r https://github.com/meilisearch/MeiliSearch.git -b meilisearch ;;
+	minio) go -t server -r https://github.com/minio/minio.git -m . ;;
+	yggdrasil) go -t server -r https://github.com/yggdrasil-network/yggdrasil-go.git -m ./cmd/yggdrasil ;;
 	esac
 done
 
