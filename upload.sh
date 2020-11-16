@@ -1,7 +1,7 @@
 #!/bin/sh
 case "$1" in
-	all) "$0" c/ go/ rust/ ;;
-	'') exit 1 ;;
+	all) "$0" c/ go/ rust/ server/ testing/ ;;
+	'') "$0" c/ go/ rust/ ;;
 esac
 
 mc() {
