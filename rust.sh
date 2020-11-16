@@ -15,11 +15,14 @@ cargo build --release --bins
 if [ -z "$bin" ]; then
 	bin="$(find -type f -executable)"
 	for b in $bin; do
+		strip "$b"
 		handlebin "$b"
 	done
 else
 	for b in $bin; do
-		handlebin "$(find -type f -executable -name $b)"
+		p="$(find -type f -executable -name $b)"
+		strip "$p"
+		handlebin "$p"
 	done
 fi
 
