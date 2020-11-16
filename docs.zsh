@@ -32,7 +32,7 @@ scd() {
 bare https://raw.githubusercontent.com/eradman/entr/master/entr.1 entr 1
 
 # fd
-bare https://github.com/sharkdp/fd/blob/master/doc/fd.1 fd 1
+bare https://raw.githubusercontent.com/sharkdp/fd/master/doc/fd.1 fd 1
 
 # foot
 scd https://codeberg.org/dnkl/foot/raw/branch/master/doc/foot.1.scd       foot       1
