@@ -51,6 +51,7 @@ cache="$dir"/cache/git
 name="$(cclone $repo)"
 ver="$(git -C $name describe --tags --always)"
 
+export MAKEOPTS="-j$(nproc)"
 export VERSION="$ver"
 export COMMIT="$(git rev-parse --verify HEAD)"
 export BUILDER='https://minio.toast.cafe/bin/index.html'

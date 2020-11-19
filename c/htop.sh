@@ -2,5 +2,5 @@
 apk add ncurses-dev
 ./autogen.sh
 ./configure
-make -j $(nproc)
+make
 bin=htop
