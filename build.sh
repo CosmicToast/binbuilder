@@ -93,9 +93,11 @@ for i; do
 	watchexec) rust -t testing -r https://github.com/watchexec/watchexec.git -b watchexec ;;
 	#   - servers / occasional
 	caddy) go -t server -r https://github.com/caddyserver/caddy.git -m ./cmd/caddy ;;
+	dnsmasq) cc -t server -r git://thekelleys.org.uk/dnsmasq.git ;;
 	echoip) go -t server -r https://github.com/mpolden/echoip.git -m ./cmd/echoip ;;
 	meilisearch)  rust -t server -r https://github.com/meilisearch/MeiliSearch.git -b meilisearch ;;
 	minio) go -t server -r https://github.com/minio/minio.git -m . ;;
+	unbound) cc -t server -r https://github.com/NLnetLabs/unbound.git ;;
 	yggdrasil) go -t server -r https://github.com/yggdrasil-network/yggdrasil-go.git -m ./cmd/yggdrasil ;;
 	esac
 done
