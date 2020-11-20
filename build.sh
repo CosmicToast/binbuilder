@@ -42,19 +42,20 @@ for i; do
 	case "$i" in
 	# bundles
 	all)  $0 c go rust ;;
-	c)    $0 entr foot htop jq mksh samurai scdoc ;;
+	c)    $0 entr foot htop iproute2 jq mksh samurai scdoc ;;
 	go)   $0 amfora chezmoi jump fzf ht mc micro rclone restic scc \
-	         serve yggdrasilctl;;
+	         serve ;;
 	rust) $0 bat exa fd rg rsign ;;
 
 	# c
-	entr)    cc -r https://github.com/eradman/entr.git                  ;;
-	foot)    cc -r https://codeberg.org/dnkl/foot.git -u                ;;
-	htop)    cc -r https://github.com/htop-dev/htop.git                 ;;
-	jq)      cc -r https://github.com/stedolan/jq.git                   ;;
-	mksh)    cc -r https://github.com/MirBSD/mksh.git -u                ;;
-	samurai) cc -r https://github.com/michaelforney/samurai.git -m samu ;;
-	scdoc)   cc -r https://git.sr.ht/~sircmpwn/scdoc -m scdoc           ;;
+	entr)     cc -r https://github.com/eradman/entr.git                  ;;
+	foot)     cc -r https://codeberg.org/dnkl/foot.git -u                ;;
+	htop)     cc -r https://github.com/htop-dev/htop.git                 ;;
+	iproute2) cc -r git://git.kernel.org/pub/scm/network/iproute2/iproute2.git ;;
+	jq)       cc -r https://github.com/stedolan/jq.git                   ;;
+	mksh)     cc -r https://github.com/MirBSD/mksh.git -u                ;;
+	samurai)  cc -r https://github.com/michaelforney/samurai.git -m samu ;;
+	scdoc)    cc -r https://git.sr.ht/~sircmpwn/scdoc -m scdoc           ;;
 
 	# go
 	chezmoi) go -r https://github.com/twpayne/chezmoi.git   -m .            ;;
