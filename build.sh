@@ -69,7 +69,6 @@ for i; do
 	# these are long, ok?
 	amfora) go -r https://github.com/makeworld-the-better-one/amfora -m amfora ;;
 	micro) go -r https://github.com/zyedidia/micro.git -m build-all -b micro ;;
-	yggdrasilctl) go -r https://github.com/yggdrasil-network/yggdrasil-go.git -m ./cmd/yggdrasilctl ;;
 
 	# rust
 	bat)   rust -r https://github.com/sharkdp/bat.git        -b bat   ;;
@@ -98,7 +97,7 @@ for i; do
 	meilisearch)  rust -t server -r https://github.com/meilisearch/MeiliSearch.git -b meilisearch ;;
 	minio) go -t server -r https://github.com/minio/minio.git -m . ;;
 	unbound) cc -t server -r https://github.com/NLnetLabs/unbound.git ;;
-	yggdrasil) go -t server -r https://github.com/yggdrasil-network/yggdrasil-go.git -m ./cmd/yggdrasil ;;
+	yggdrasil) go -t server -r https://github.com/yggdrasil-network/yggdrasil-go.git -m './cmd/yggdrasil ./cmd/yggdrasilctl' ;;
 	esac
 done
 
