@@ -7,15 +7,24 @@ cd "$name"
 # build
 export CGO_ENABLED=0
 export GOPATH="$dir"/cache/go
-if [ -d "$mod" ]
-then # it's a real go module
-	go build -ldflags='-s -w' "$mod"
-else # it's a makefile target, $mod may be empty
-	make $mod -j $(nproc)
-fi
+
+for m in $mod; do
+	if [ -d $m ]; then
+		go build -ldflags='-s -w' $m
+	else
+		make $m
+	fi
+done
+[ -z "$mod" ] && make
 
 # wesmart
-[ -z "$bin" ] && [ ! -z "$mod" ] && bin="$(basename $mod)"
-[ -z "$bin" ] || [ "$bin" = '.' ] && bin="$name" 
-handlebin "$bin"
+if [ -z "$bin" ] && [ ! -z "$mod" ]; then
+	for m in $mod; do
+		mm="$(basename $m)"
+		[ $mm = '.' ] && mm="$name"
+		bin="$bin $mm"
+	done
+fi
+[ -z "$bin" ] && bin="$name"
+for f in $bin; do handlebin "$f"; done
 clean
