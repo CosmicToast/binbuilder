@@ -5,21 +5,31 @@
 bin=  # override binary name
 mod=  # module path, mostly useful for rust
 name= # this will be autodetected
+opts= # custom options, queryable using "has_opt", only alphanum
 repo= # required, for obvious reasons
 pack= # set flag to disable
 # type should be pre-set in the main script, but can be overriden
 
-while getopts b:m:n:r:t:u name
+while getopts b:m:o:r:t:u name
 do
 	case $name in
 	b) bin="$OPTARG";;
 	m) mod="$OPTARG";;
+	o) opts="$opts $OPTARG" ;;
 	r) repo="$OPTARG";;
 	t) type="$OPTARG";;
 	u) pack=no ;;
 	?) exit 2;;
 	esac
 done
+
+# has_opt utility
+has_opt() {
+	for o in $opts; do
+		[ "$o" = "$1" ] && return 0
+	done
+	return 1
+}
 
 # common deps
 . /etc/os-release
