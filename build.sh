@@ -88,9 +88,11 @@ for i; do
 	gotop) go -t testing -r https://github.com/xxxserxxx/gotop.git -m ./cmd/gotop ;;
 	handlr) rust -t testing -r https://github.com/chmln/handlr.git -b handlr ;;
 	hyperfine) rust -t testing -r https://github.com/sharkdp/hyperfine.git -b hyperfine ;;
+	nmap) cc -t testing -r https://github.com/nmap/nmap.git ;;
 	rc) cc -t testing -r https://github.com/muennich/rc -u ;;
 	rsync) cc -t testing -r https://github.com/WayneD/rsync.git ;;
 	sd) rust -t testing -r https://github.com/chmln/sd.git -b sd ;;
+	sixel) cc -t testing -r https://github.com/saitoha/libsixel.git ;;
 	sk) rust -t testing -r https://github.com/lotabout/skim.git -b sk ;;
 	watchexec) rust -t testing -r https://github.com/watchexec/watchexec.git -b watchexec ;;
 	#   - servers / occasional
