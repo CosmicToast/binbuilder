@@ -8,6 +8,11 @@ cd "$name"
 export CGO_ENABLED=0
 export GOPATH="$dir"/cache/go
 
+# generate step
+if has_opt generate; then
+	go generate ./...
+fi
+
 for m in $mod; do
 	if [ -d $m ]; then
 		go build -ldflags='-s -w' $m
