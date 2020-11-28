@@ -84,7 +84,8 @@ for i; do
 	# or they're "testing" packages
 	#   - testing
 	drill) cc -t testing -r https://github.com/NLnetLabs/ldns.git ;;
-	duf) go -t testing -r  https://github.com/muesli/duf.git -m . ;;
+	duf) go -t testing -r https://github.com/muesli/duf.git -m . ;;
+	elvish) go -t testing -r https://github.com/elves/elvish.git -m . -u ;; # I would love to -o generate, but they don't use the go-run method
 	gotop) go -t testing -r https://github.com/xxxserxxx/gotop.git -m ./cmd/gotop ;;
 	handlr) rust -t testing -r https://github.com/chmln/handlr.git -b handlr ;;
 	hyperfine) rust -t testing -r https://github.com/sharkdp/hyperfine.git -b hyperfine ;;
