@@ -13,6 +13,7 @@ export LDFLAGS='-all-static -static'
 if has_opt "apk_add"; then
 	# TODO: implement
 	# how?
+	echo not implemented
 fi
 
 # - link utilities
@@ -21,7 +22,7 @@ if has_opt "link"; then
 	ln -s clang++ /bin/cxx
 	for i in ar ranlib; do
 		ln -s llvm-$i /bin/$i
-	fi
+	done
 fi
 
 # - git submodules
