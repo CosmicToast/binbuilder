@@ -1,9 +1,6 @@
 # for now only builds ncat
 apk add openssl-dev
 
-ln -s llvm-ar /bin/ar
-ln -s llvm-ranlib /bin/ranlib
-
 confc() {
 	cd $1
 	./configure
