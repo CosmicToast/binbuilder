@@ -6,7 +6,7 @@ apk add pixman-dev wayland-dev wayland-protocols wayland-protocols-dev libxkbcom
 	libffi-dev bzip2-dev expat-dev
 
 CC=clang
-CFLAGS='-Os -pipe -fomit-frame-pointer'
+CFLAGS='-Os -pipe -fomit-frame-pointer -DFOOT_IME_ENABLED=1'
 LDFLAGS='-Wl,-O1 -Wl,--as-needed'
 
 LIBS="pixman-1 wayland-protocols wayland-client wayland-cursor xkbcommon fontconfig tllist fcft libffi"
