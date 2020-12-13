@@ -83,9 +83,11 @@ for i; do
 	# this means it's either not worth distributing them regularly
 	# or they're "testing" packages
 	#   - testing
+	cmark) cc -r https://github.com/commonmark/cmark.git ;;
 	drill) cc -t testing -r https://github.com/NLnetLabs/ldns.git -o link ;;
 	duf) go -t testing -r https://github.com/muesli/duf.git -m . ;;
 	elvish) go -t testing -r https://github.com/elves/elvish.git -m . -u ;; # I would love to -o generate, but they don't use the go-run method
+	gomplate) go -t testing -r https://github.com/hairyhenderson/gomplate.git -m ./cmd/gomplate ;;
 	gotop) go -t testing -r https://github.com/xxxserxxx/gotop.git -m ./cmd/gotop ;;
 	handlr) rust -t testing -r https://github.com/chmln/handlr.git -b handlr ;;
 	hyperfine) rust -t testing -r https://github.com/sharkdp/hyperfine.git -b hyperfine ;;
