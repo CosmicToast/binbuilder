@@ -42,12 +42,13 @@ for i; do
 	case "$i" in
 	# bundles
 	all)  $0 c go rust ;;
-	c)    $0 entr foot htop iproute2 jq mksh samurai scdoc ;;
+	c)    $0 cmark entr foot htop iproute2 jq mksh samurai scdoc ;;
 	go)   $0 amfora chezmoi jump fzf ht mc micro rclone restic scc \
 	         serve ;;
 	rust) $0 bat exa fd rg rsign ;;
 
 	# c
+	cmark) cc -r https://github.com/commonmark/cmark.git ;;
 	entr)     cc -r https://github.com/eradman/entr.git                  ;;
 	foot)     cc -r https://codeberg.org/dnkl/foot.git -u                ;;
 	htop)     cc -r https://github.com/htop-dev/htop.git                 ;;
@@ -83,7 +84,6 @@ for i; do
 	# this means it's either not worth distributing them regularly
 	# or they're "testing" packages
 	#   - testing
-	cmark) cc -r https://github.com/commonmark/cmark.git ;;
 	drill) cc -t testing -r https://github.com/NLnetLabs/ldns.git -o link ;;
 	duf) go -t testing -r https://github.com/muesli/duf.git -m . ;;
 	elvish) go -t testing -r https://github.com/elves/elvish.git -m . -u ;; # I would love to -o generate, but they don't use the go-run method
