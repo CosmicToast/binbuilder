@@ -98,6 +98,7 @@ for i; do
 	sd) rust -t testing -r https://github.com/chmln/sd.git -b sd ;;
 	sixel) cc -t testing -r https://github.com/saitoha/libsixel.git ;;
 	sk) rust -t testing -r https://github.com/lotabout/skim.git -b sk ;;
+	toybox) cc -t testing -r https://github.com/landley/toybox.git -u ;;
 	watchexec) rust -t testing -r https://github.com/watchexec/watchexec.git -b watchexec ;;
 	#   - servers / occasional
 	caddy) go -t server -r https://github.com/caddyserver/caddy.git -m ./cmd/caddy ;;
