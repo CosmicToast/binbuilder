@@ -96,6 +96,7 @@ for i; do
 	hyperfine) rust -t testing -r https://github.com/sharkdp/hyperfine.git -b hyperfine ;;
 	lua) cc -t testing -r https://github.com/lua/lua.git -o link -u ;;
 	nmap) cc -t testing -r https://github.com/nmap/nmap.git -o link ;;
+	pup) go -t testing -r https://github.com/ericchiang/pup.git -m . ;;
 	rsync) cc -t testing -r https://github.com/WayneD/rsync.git ;;
 	sd) rust -t testing -r https://github.com/chmln/sd.git -b sd ;;
 	sixel) cc -t testing -r https://github.com/saitoha/libsixel.git ;;
