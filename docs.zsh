@@ -28,6 +28,10 @@ scd() {
 # if we're being sourced, this is it
 (( $#zsh_eval_context > 1 )) && return
 
+# cmark
+bare https://raw.githubusercontent.com/commonmark/cmark/master/man/man1/cmark.1 cmark 1
+bare https://raw.githubusercontent.com/commonmark/cmark/master/man/man3/cmark.3 cmark 3
+
 # entr
 bare https://raw.githubusercontent.com/eradman/entr/master/entr.1 entr 1
 
@@ -42,12 +46,18 @@ scd https://codeberg.org/dnkl/foot/raw/branch/master/doc/footclient.1.scd footcl
 # fzf
 bare https://raw.githubusercontent.com/junegunn/fzf/master/man/man1/fzf.1 fzf 1
 
+# hyperfine
+bare https://raw.githubusercontent.com/sharkdp/hyperfine/master/doc/hyperfine.1 hyperfine 1
+
 # jq
 bare https://raw.githubusercontent.com/stedolan/jq/master/jq.1.prebuilt jq 1
 
 # mksh
 bare https://raw.githubusercontent.com/MirBSD/mksh/master/lksh.1 lksh 1
 bare https://raw.githubusercontent.com/MirBSD/mksh/master/mksh.1 mksh 1
+
+# nmap
+bare https://raw.githubusercontent.com/nmap/nmap/master/ncat/docs/ncat.1 ncat 1
 
 # rc
 bare https://raw.githubusercontent.com/muennich/rc/master/rc.1 rc 1
@@ -66,6 +76,13 @@ bare https://raw.githubusercontent.com/michaelforney/samurai/master/samu.1 samu 
 # scdoc
 scd https://git.sr.ht/~sircmpwn/scdoc/blob/master/scdoc.1.scd scdoc 1
 scd https://git.sr.ht/~sircmpwn/scdoc/blob/master/scdoc.5.scd scdoc 5
+
+# skim
+for i in sk sk-tmux
+	bare https://raw.githubusercontent.com/lotabout/skim/master/man/man1/$i $i 1
+
+# watchexec
+bare https://raw.githubusercontent.com/watchexec/watchexec/main/doc/watchexec.1 watchexec 1
 
 # ---- compress!
 find "$dir" -type f -exec gzip '{}' +
