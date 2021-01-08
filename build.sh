@@ -42,10 +42,10 @@ for i; do
 	case "$i" in
 	# bundles
 	all)  $0 c go rust ;;
-	c)    $0 cmark entr foot htop iproute2 jq mksh samurai scdoc ;;
+	c)    $0 cmark entr foot htop iproute2 jq mksh rc samurai scdoc ;;
 	go)   $0 amfora chezmoi jump fzf ht mc micro rclone restic scc \
 	         serve ;;
-	rust) $0 bat exa fd rg rsign ;;
+	rust) $0 bat exa fd rg rsign sk ;;
 
 	# c
 	cmark) cc -r https://github.com/commonmark/cmark.git ;;
@@ -55,6 +55,7 @@ for i; do
 	iproute2) cc -r git://git.kernel.org/pub/scm/network/iproute2/iproute2.git ;;
 	jq)       cc -r https://github.com/stedolan/jq.git                   ;;
 	mksh)     cc -r https://github.com/MirBSD/mksh.git -u                ;;
+	rc)       cc -r https://github.com/muennich/rc -u                    ;;
 	samurai)  cc -r https://github.com/michaelforney/samurai.git -m samu ;;
 	scdoc)    cc -r https://git.sr.ht/~sircmpwn/scdoc -m scdoc           ;;
 
@@ -78,6 +79,7 @@ for i; do
 	fd)    rust -r https://github.com/sharkdp/fd.git         -b fd    ;;
 	rg)    rust -r https://github.com/BurntSushi/ripgrep.git -b rg    ;;
 	rsign) rust -r https://github.com/jedisct1/rsign2.git    -b rsign ;;
+	sk)    rust -r https://github.com/lotabout/skim.git      -b sk    ;;
 
 	# manual
 	# packages that aren't bult in "all" builds
@@ -93,11 +95,9 @@ for i; do
 	hyperfine) rust -t testing -r https://github.com/sharkdp/hyperfine.git -b hyperfine ;;
 	lua) cc -t testing -r https://github.com/lua/lua.git -o link -u ;;
 	nmap) cc -t testing -r https://github.com/nmap/nmap.git -o link ;;
-	rc) cc -t testing -r https://github.com/muennich/rc -u ;;
 	rsync) cc -t testing -r https://github.com/WayneD/rsync.git ;;
 	sd) rust -t testing -r https://github.com/chmln/sd.git -b sd ;;
 	sixel) cc -t testing -r https://github.com/saitoha/libsixel.git ;;
-	sk) rust -t testing -r https://github.com/lotabout/skim.git -b sk ;;
 	toybox) cc -t testing -r https://github.com/landley/toybox.git -u ;;
 	watchexec) rust -t testing -r https://github.com/watchexec/watchexec.git -b watchexec ;;
 	#   - servers / occasional
