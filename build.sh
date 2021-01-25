@@ -40,6 +40,12 @@ rust() {
 
 for i; do
 	case "$i" in
+	# convenience shortcut
+	# lets you do something like:
+	# ./build.sh run cc -r git.server/my/repo.git
+	# for testing purposes
+	run) shift; $*; shift $#;;
+	
 	# bundles
 	all)  $0 c go rust ;;
 	c)    $0 cmark entr foot htop iproute2 jq mksh rc samurai scdoc ;;
