@@ -1,5 +1,4 @@
 #!/bin/sh
-apk add bison ncurses-dev readline-dev
 # both EDIT and LDLIBS need to be defined
 # EDIT so that the correct .c file is included in OBJS
 # LDLIBS to force adding ncursesw

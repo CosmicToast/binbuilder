@@ -44,7 +44,7 @@ for i; do
 	# lets you do something like:
 	# ./build.sh run cc -r git.server/my/repo.git
 	# for testing purposes
-	run) shift; $*; shift $#;;
+	run) shift; $*; exit 0;;
 	
 	# bundles
 	all)  $0 c go rust ;;
@@ -92,16 +92,17 @@ for i; do
 	# this means it's either not worth distributing them regularly
 	# or they're "testing" packages
 	#   - testing
-	drill) cc -t testing -r https://github.com/NLnetLabs/ldns.git -o link ;;
+	drill) cc -t testing -r https://github.com/NLnetLabs/ldns.git ;;
 	duf) go -t testing -r https://github.com/muesli/duf.git -m . ;;
-	elvish) go -t testing -r https://github.com/elves/elvish.git -m . -u ;; # I would love to -o generate, but they don't use the go-run method
+	elvish) go -t testing -r https://github.com/elves/elvish.git -m ./cmd/elvish -u ;; # I would love to -o generate, but they don't use the go-run method
 	fdupes) cc -t testing -r https://github.com/adrianlopezroche/fdupes.git -o autoreconf -b fdupes ;;
+	ffsend) rust -t testing -r https://github.com/timvisee/ffsend.git -b ffsend ;;
 	gomplate) go -t testing -r https://github.com/hairyhenderson/gomplate.git -m ./cmd/gomplate ;;
 	gotop) go -t testing -r https://github.com/xxxserxxx/gotop.git -m ./cmd/gotop ;;
 	handlr) rust -t testing -r https://github.com/chmln/handlr.git -b handlr ;;
 	hyperfine) rust -t testing -r https://github.com/sharkdp/hyperfine.git -b hyperfine ;;
-	lua) cc -t testing -r https://github.com/lua/lua.git -o link -u ;;
-	nmap) cc -t testing -r https://github.com/nmap/nmap.git -o link ;;
+	lua) cc -t testing -r https://github.com/lua/lua.git -u ;;
+	nmap) cc -t testing -r https://github.com/nmap/nmap.git ;;
 	pup) go -t testing -r https://github.com/ericchiang/pup.git -m . ;;
 	rsync) cc -t testing -r https://github.com/WayneD/rsync.git ;;
 	sd) rust -t testing -r https://github.com/chmln/sd.git -b sd ;;
@@ -119,6 +120,5 @@ for i; do
 	esac
 done
 
-# these repos are excluded, reasons attached
-# https://github.com/timvisee/ffsend   -> openssl-sys
-# https://github.com/starship/starship -> openssl-sys
+# currently failing due to a segfault in build-script-build, cause unknown
+# starship) rust -t testing -r https://github.com/starship/starship.git -b starship ;;

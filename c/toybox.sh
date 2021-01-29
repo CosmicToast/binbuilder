@@ -1,4 +1,3 @@
-apk add bash
 m() make HOSTCC=$CC LDFLAGS="$LDFLAGS" "$@"
 cset() sed .config -i -e "/$1\b/s/.*/$1=$2/"
 

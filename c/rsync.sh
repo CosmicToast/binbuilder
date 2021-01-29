@@ -1,4 +1,4 @@
-apk add acl-dev lz4-dev openssl-dev zlib-dev zstd-dev
+apk add acl-dev lz4-dev zlib-dev zstd-dev
 
 # do not trust the bundled configure script
 autoreconf -fi

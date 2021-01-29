@@ -1,4 +1,7 @@
 #!/bin/sh
-for d in *; do
-	docker build -t binbuilder:$d $d
-done
+b() {
+	docker build -t binbuilder:$1 $1
+}
+
+b cbase
+for d in c go rust; do b $d; done

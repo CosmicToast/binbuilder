@@ -1,6 +1,4 @@
 # for now only builds ncat
-apk add openssl-dev
-
 confc() {
 	cd $1
 	./configure

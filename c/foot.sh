@@ -31,7 +31,7 @@ find . -name '*.c' -exec "$CC" $CFLAGS '{}' -o '{}.o' \;
 
 # link
 # WARNING: ORDER IS IMPORTANT
-"$CC" $LDFLAGS client.c.o log.c.o xmalloc.c.o -o footclient
+"$CC" $LDFLAGS client.c.o log.c.o xmalloc.c.o debug.c.o -o footclient
 rm client.c.o
 "$CC" *.o $LDFLAGS $LIBFLAGS -o foot
 

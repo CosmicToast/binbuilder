@@ -5,11 +5,22 @@ type=rust
 . ./options.sh
 cd "$name"
 
-# build
-export CARGO_BUILD_TARGET=$(uname -m)-unknown-linux-musl
+# build env
 export CARGO_HOME="$dir"/cache/rust
-export RUSTC_WRAPPER=sccache
-export SCCACHE_DIR="$dir"/cache/sccache
+if ! has_opt nocache; then
+	export RUSTC_WRAPPER=sccache
+	export SCCACHE_DIR="$dir"/cache/sccache
+fi
+
+# -sys crates workarounds
+export PKG_CONFIG_ALL_STATIC=1
+# * libz-sys
+export LIBZ_SYS_STATIC=1
+# * openssl-sys
+export OPENSSL_DIR=/usr
+export OPENSSL_NO_VENDOR=1
+export OPENSSL_STATIC=1
+
 cargo build --release --bins
 
 if [ -z "$bin" ]; then
