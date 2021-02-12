@@ -23,7 +23,6 @@ fi
 
 # - libtoolize
 if has_opt "libtoolize"; then
-	touch install.sh
 	libtoolize -cfi
 fi
 
