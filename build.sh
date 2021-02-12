@@ -101,6 +101,7 @@ for i; do
 	gotop) go -t testing -r https://github.com/xxxserxxx/gotop.git -m ./cmd/gotop ;;
 	handlr) rust -t testing -r https://github.com/chmln/handlr.git -b handlr ;;
 	hyperfine) rust -t testing -r https://github.com/sharkdp/hyperfine.git -b hyperfine ;;
+	less) cc -t testing -r https://github.com/gwsw/less.git -o autoreconf ;;
 	lua) cc -t testing -r https://github.com/lua/lua.git -u ;;
 	nmap) cc -t testing -r https://github.com/nmap/nmap.git ;;
 	pup) go -t testing -r https://github.com/ericchiang/pup.git -m . ;;
