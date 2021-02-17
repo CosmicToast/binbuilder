@@ -1,4 +1,4 @@
-FROM abyssos/abyss
+FROM binbuilder:base
 
 # base dockerfile for anything that needs C things
 # this means including rust!
@@ -6,7 +6,7 @@ FROM abyssos/abyss
 
 RUN apk add --no-cache \
 	# tools
-	autoconf autoconf-archive automake bash cmake file git gmake libtool lld pkgconf \
+	autoconf autoconf-archive automake bash cmake file libtool lld pkgconf \
 	# compiler libs
 	clang-dev libcxx-dev llvm-dev linux-dev musl-dev \
 	# compiler compiler tools
@@ -17,7 +17,6 @@ RUN apk add --no-cache \
 # recognize as many utilities as possible by default
 RUN [ "/usr/bin/ln", "-sf", "clang",       "/usr/bin/cc" ]
 RUN [ "/usr/bin/ln", "-sf", "clang++",     "/usr/bin/cxx" ]
-RUN [ "/usr/bin/ln", "-sf", "gmake",       "/usr/bin/make" ]
 RUN [ "/usr/bin/ln", "-sf", "lld",         "/usr/bin/ld" ]
 RUN [ "/usr/bin/ln", "-sf", "llvm-ar",     "/usr/bin/ar" ]
 RUN [ "/usr/bin/ln", "-sf", "llvm-nm",     "/usr/bin/nm" ]
