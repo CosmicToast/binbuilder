@@ -6,7 +6,8 @@ FROM binbuilder:base
 
 RUN apk add --no-cache \
 	# tools
-	autoconf autoconf-archive automake bash cmake file libtool lld pkgconf \
+	autoconf autoconf-archive automake bash cmake file gettext-tiny \
+	libtool lld pkgconf \
 	# compiler libs
 	clang-dev libcxx-dev llvm-dev linux-dev musl-dev \
 	# compiler compiler tools
