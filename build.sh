@@ -44,7 +44,7 @@ for i; do
 	# lets you do something like:
 	# ./build.sh run cc -r git.server/my/repo.git
 	# for testing purposes
-	run) shift; $*; exit 0;;
+	run) shift; "$@"; exit 0;;
 	
 	# bundles
 	all)  $0 c go rust ;;
