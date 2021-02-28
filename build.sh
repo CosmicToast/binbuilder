@@ -1,7 +1,7 @@
 #!/bin/sh -e
 
 # default runner
-[ -z "$RUNNER" ] && RUNNER=docker
+[ -z "$RUNNER" ] && RUNNER=podman
 
 # utils
 common() {
