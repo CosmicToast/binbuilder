@@ -92,7 +92,6 @@ for i; do
 	# this means it's either not worth distributing them regularly
 	# or they're "testing" packages
 	#   - testing
-	age) go -t testing -r https://github.com/FiloSottile/age.git -m './cmd/age ./cmd/age-keygen' ;;
 	drill) cc -t testing -r https://github.com/NLnetLabs/ldns.git ;;
 	duf) go -t testing -r https://github.com/muesli/duf.git -m . ;;
 	elvish) go -t testing -r https://github.com/elves/elvish.git -m ./cmd/elvish -u ;; # I would love to -o generate, but they don't use the go-run method
