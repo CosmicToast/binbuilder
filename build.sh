@@ -105,6 +105,7 @@ for i; do
 	less) cc -t testing -r https://github.com/gwsw/less.git -o autoreconf ;;
 	lua) cc -t testing -r https://github.com/lua/lua.git -u ;;
 	nmap) cc -t testing -r https://github.com/nmap/nmap.git ;;
+	pastel) rust -t testing -r https://github.com/sharkdp/pastel.git -b pastel ;;
 	pup) go -t testing -r https://github.com/ericchiang/pup.git -m . ;;
 	rsync) cc -t testing -r https://github.com/WayneD/rsync.git ;;
 	sd) rust -t testing -r https://github.com/chmln/sd.git -b sd ;;
