@@ -110,8 +110,10 @@ for i; do
 	rsync) cc -t testing -r https://github.com/WayneD/rsync.git ;;
 	sd) rust -t testing -r https://github.com/chmln/sd.git -b sd ;;
 	sixel) cc -t testing -r https://github.com/saitoha/libsixel.git ;;
+	socat) cc -t testing -r git://repo.or.cz/socat.git ;;
 	toybox) cc -t testing -r https://github.com/landley/toybox.git -u ;;
 	watchexec) rust -t testing -r https://github.com/watchexec/watchexec.git -b watchexec ;;
+	zstd) cc -t testing -r https://github.com/facebook/zstd.git -u ;;
 	#   - servers / occasional
 	caddy) go -t server -r https://github.com/caddyserver/caddy.git -m ./cmd/caddy ;;
 	dnsmasq) cc -t server -r git://thekelleys.org.uk/dnsmasq.git ;;
