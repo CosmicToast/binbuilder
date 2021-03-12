@@ -92,6 +92,7 @@ for i; do
 	# this means it's either not worth distributing them regularly
 	# or they're "testing" packages
 	#   - testing
+	bash) cc -t testing -r https://git.savannah.gnu.org/git/bash.git -u -o dumb_curses ;;
 	drill) cc -t testing -r https://github.com/NLnetLabs/ldns.git ;;
 	duf) go -t testing -r https://github.com/muesli/duf.git -m . ;;
 	elvish) go -t testing -r https://github.com/elves/elvish.git -m ./cmd/elvish -u ;; # I would love to -o generate, but they don't use the go-run method

@@ -16,6 +16,13 @@ if has_opt "apk_add"; then
 	echo not implemented
 fi
 
+# - curses symlinks
+if has_opt "dumb_curses"; then
+	for i in curses ncurses; do
+		ln -s /usr/lib/libncursesw.a /usr/lib/lib$i.a
+	done
+fi
+
 # - git submodules
 if has_opt "git_submodules"; then
 	git submodule update --init
