@@ -61,9 +61,9 @@ for i; do
 	iproute2) cc -r git://git.kernel.org/pub/scm/network/iproute2/iproute2.git ;;
 	jq)       cc -r https://github.com/stedolan/jq.git                   ;;
 	mksh)     cc -r https://github.com/MirBSD/mksh.git -u                ;;
-	rc)       cc -r https://github.com/muennich/rc -u                    ;;
+	rc)       cc -r https://github.com/muennich/rc.git -u                ;;
 	samurai)  cc -r https://github.com/michaelforney/samurai.git -m samu ;;
-	scdoc)    cc -r https://git.sr.ht/~sircmpwn/scdoc -m scdoc           ;;
+	scdoc)    cc -r https://git.sr.ht/~sircmpwn/scdoc.git -m scdoc       ;;
 
 	# go
 	chezmoi) go -r https://github.com/twpayne/chezmoi.git   -m .            ;;
@@ -76,7 +76,7 @@ for i; do
 	scc)	 go -r https://github.com/boyter/scc.git        -m .            ;;
 	serve)   go -r https://github.com/syntaqx/serve.git     -m ./cmd/serve  ;;
 	# these are long, ok?
-	amfora) go -r https://github.com/makeworld-the-better-one/amfora -m amfora ;;
+	amfora) go -r https://github.com/makeworld-the-better-one/amfora.git -m amfora ;;
 	micro) go -r https://github.com/zyedidia/micro.git -m build-all -b micro ;;
 
 	# rust
