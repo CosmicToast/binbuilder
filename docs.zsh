@@ -28,9 +28,18 @@ scd() {
 # if we're being sourced, this is it
 (( $#zsh_eval_context > 1 )) && return
 
+# bash
+bare https://git.savannah.gnu.org/cgit/bash.git/plain/doc/bash.1 bash 1
+
 # cmark
 bare https://raw.githubusercontent.com/commonmark/cmark/master/man/man1/cmark.1 cmark 1
 bare https://raw.githubusercontent.com/commonmark/cmark/master/man/man3/cmark.3 cmark 3
+
+# dropbear
+bare https://raw.githubusercontent.com/mkj/dropbear/master/dbclient.1 dbclient 1
+bare https://raw.githubusercontent.com/mkj/dropbear/master/dropbear.8 dropbear 8
+bare https://raw.githubusercontent.com/mkj/dropbear/master/dropbearconvert.1 dropbearconvert 1
+bare https://raw.githubusercontent.com/mkj/dropbear/master/dropbearkey.1 dropbearkey 1
 
 # entr
 bare https://raw.githubusercontent.com/eradman/entr/master/entr.1 entr 1
@@ -83,6 +92,9 @@ for i in sk sk-tmux
 
 # watchexec
 bare https://raw.githubusercontent.com/watchexec/watchexec/main/doc/watchexec.1 watchexec 1
+
+# zstd
+bare https://raw.githubusercontent.com/facebook/zstd/dev/programs/zstd.1 zstd 1
 
 # ---- compress!
 find "$dir" -type f -exec gzip '{}' +
