@@ -19,7 +19,7 @@ fi
 # - curses symlinks
 if has_opt "dumb_curses"; then
 	for i in curses ncurses; do
-		ln -s /usr/lib/libncursesw.a /usr/lib/lib$i.a
+		ln -s libncursesw.a /usr/lib/lib$i.a
 	done
 fi
 
