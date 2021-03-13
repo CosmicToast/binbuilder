@@ -104,6 +104,7 @@ for i; do
 	handlr) rust -t testing -r https://github.com/chmln/handlr.git -b handlr ;;
 	hyperfine) rust -t testing -r https://github.com/sharkdp/hyperfine.git -b hyperfine ;;
 	less) cc -t testing -r https://github.com/gwsw/less.git -o autoreconf ;;
+	libarchive) cc -t testing -r https://github.com/libarchive/libarchive.git -o autoreconf ;;
 	lua) cc -t testing -r https://github.com/lua/lua.git -u ;;
 	nmap) cc -t testing -r https://github.com/nmap/nmap.git ;;
 	pastel) rust -t testing -r https://github.com/sharkdp/pastel.git -b pastel ;;
