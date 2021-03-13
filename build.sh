@@ -118,6 +118,7 @@ for i; do
 	#   - servers / occasional
 	caddy) go -t server -r https://github.com/caddyserver/caddy.git -m ./cmd/caddy ;;
 	dnsmasq) cc -t server -r git://thekelleys.org.uk/dnsmasq.git ;;
+	dropbear) cc -t server -r https://github.com/mkj/dropbear.git -o autoreconf ;;
 	echoip) go -t server -r https://github.com/mpolden/echoip.git -m ./cmd/echoip ;;
 	meilisearch)  rust -t server -r https://github.com/meilisearch/MeiliSearch.git -b meilisearch ;;
 	minio) go -t server -r https://github.com/minio/minio.git -m . ;;
