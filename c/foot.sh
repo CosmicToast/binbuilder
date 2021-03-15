@@ -34,5 +34,3 @@ find . -name '*.c' -exec "$CC" $CFLAGS '{}' -o '{}.o' \;
 "$CC" $LDFLAGS xsnprintf.c.o client.c.o log.c.o xmalloc.c.o debug.c.o -o footclient
 rm client.c.o
 "$CC" *.o $LDFLAGS $LIBFLAGS -o foot
-
-bin='foot footclient'

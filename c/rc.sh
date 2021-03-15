@@ -4,4 +4,3 @@
 # LDLIBS to force adding ncursesw
 # TODO: contribute to the hand-written makefile with the added system LIBS= :)
 make EDIT=readline CC=clang YACC=yacc LDLIBS='-lreadline -lncursesw'
-bin=rc

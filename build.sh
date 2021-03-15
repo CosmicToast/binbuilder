@@ -29,13 +29,13 @@ shell() {
 }
 
 cc() {
-	common c.sh binbuilder:c "$@"
+	common c.bash binbuilder:c "$@"
 }
 go() {
-	common go.sh binbuilder:go "$@"
+	common go.bash binbuilder:go "$@"
 }
 rust() {
-	common rust.sh binbuilder:rust "$@"
+	common rust.bash binbuilder:rust "$@"
 }
 
 for i; do
@@ -54,77 +54,90 @@ for i; do
 	rust) $0 bat exa fd rg rsign sk ;;
 
 	# c
-	cmark) cc -r https://github.com/commonmark/cmark.git ;;
-	entr)     cc -r https://github.com/eradman/entr.git                  ;;
-	foot)     cc -r https://codeberg.org/dnkl/foot.git -u                ;;
-	htop)     cc -r https://github.com/htop-dev/htop.git                 ;;
-	iproute2) cc -r git://git.kernel.org/pub/scm/network/iproute2/iproute2.git ;;
-	jq)       cc -r https://github.com/stedolan/jq.git                   ;;
-	mksh)     cc -r https://github.com/MirBSD/mksh.git -u                ;;
-	rc)       cc -r https://github.com/muennich/rc.git -u                ;;
-	samurai)  cc -r https://github.com/michaelforney/samurai.git -m samu ;;
-	scdoc)    cc -r https://git.sr.ht/~sircmpwn/scdoc.git -m scdoc       ;;
+	cmark)    cc -r https://github.com/commonmark/cmark.git ;;
+	entr)     cc -r https://github.com/eradman/entr.git @o configure @m entr ;;
+	foot)     cc -r https://codeberg.org/dnkl/foot.git @o u @b foot @b footclient ;; # TODO: xkbcommon
+	htop)     cc -r https://github.com/htop-dev/htop.git @o autogen.sh @o configure @m all @b htop ;;
+	iproute2) cc -r git://git.kernel.org/pub/scm/network/iproute2/iproute2.git @b ip/ip @b misc/ss ;;
+	jq) cc -r https://github.com/stedolan/jq.git @o git_submodules @o autoreconf \
+		@@configure --with-onigurama=builtin @@configure --disable-maintainer-mode @m all @b jq;;
+	mksh)     cc -r https://github.com/MirBSD/mksh.git @o u              ;;
+	rc)       cc -r https://github.com/muennich/rc.git @o u @b rc        ;;
+	samurai)  cc -r https://github.com/michaelforney/samurai.git @m samu ;;
+	scdoc)    cc -r https://git.sr.ht/~sircmpwn/scdoc @m scdoc --repotype=.git ;;
 
 	# go
-	chezmoi) go -r https://github.com/twpayne/chezmoi.git   -m .            ;;
-	fzf)     go -r https://github.com/junegunn/fzf.git      -m .            ;;
-	ht)      go -r https://github.com/nojima/httpie-go.git  -m ./cmd/ht     ;;
-	jump)    go -r https://github.com/gsamokovarov/jump.git -m .            ;;
-	mc)      go -r https://github.com/minio/mc.git          -m .            ;;
-	rclone)  go -r https://github.com/rclone/rclone.git     -m .            ;;
-	restic)  go -r https://github.com/restic/restic.git     -m ./cmd/restic ;;
-	scc)	 go -r https://github.com/boyter/scc.git        -m .            ;;
-	serve)   go -r https://github.com/syntaqx/serve.git     -m ./cmd/serve  ;;
+	chezmoi) go -r https://github.com/twpayne/chezmoi.git   @m .            ;;
+	fzf)     go -r https://github.com/junegunn/fzf.git      @m .            ;;
+	ht)      go -r https://github.com/nojima/httpie-go.git  @m ./cmd/ht     ;;
+	jump)    go -r https://github.com/gsamokovarov/jump.git @m .            ;;
+	mc)      go -r https://github.com/minio/mc.git          @m .            ;;
+	rclone)  go -r https://github.com/rclone/rclone.git     @m .            ;;
+	restic)  go -r https://github.com/restic/restic.git     @m ./cmd/restic ;;
+	scc)	 go -r https://github.com/boyter/scc.git        @m .            ;;
+	serve)   go -r https://github.com/syntaqx/serve.git     @m ./cmd/serve  ;;
 	# these are long, ok?
-	amfora) go -r https://github.com/makeworld-the-better-one/amfora.git -m amfora ;;
-	micro) go -r https://github.com/zyedidia/micro.git -m build-all -b micro ;;
+	amfora) go -r https://github.com/makeworld-the-better-one/amfora.git @m amfora ;;
+	micro) go -r https://github.com/zyedidia/micro.git @m build-all @b micro ;;
 
 	# rust
-	bat)   rust -r https://github.com/sharkdp/bat.git        -b bat   ;;
-	exa)   rust -r https://github.com/ogham/exa.git          -b exa   ;;
-	fd)    rust -r https://github.com/sharkdp/fd.git         -b fd    ;;
-	rg)    rust -r https://github.com/BurntSushi/ripgrep.git -b rg    ;;
-	rsign) rust -r https://github.com/jedisct1/rsign2.git    -b rsign ;;
-	sk)    rust -r https://github.com/lotabout/skim.git      -b sk    ;;
+	bat)   rust -r https://github.com/sharkdp/bat.git        @b bat   ;;
+	exa)   rust -r https://github.com/ogham/exa.git          @b exa   ;;
+	fd)    rust -r https://github.com/sharkdp/fd.git         @b fd    ;;
+	rg)    rust -r https://github.com/BurntSushi/ripgrep.git @b rg    ;;
+	rsign) rust -r https://github.com/jedisct1/rsign2.git    @b rsign ;;
+	sk)    rust -r https://github.com/lotabout/skim.git      @b sk    ;;
 
 	# manual
 	# packages that aren't bult in "all" builds
 	# this means it's either not worth distributing them regularly
 	# or they're "testing" packages
 	#   - testing
-	bash) cc -t testing -r https://git.savannah.gnu.org/git/bash.git -u -o dumb_curses ;;
-	drill) cc -t testing -r https://github.com/NLnetLabs/ldns.git ;;
-	duf) go -t testing -r https://github.com/muesli/duf.git -m . ;;
-	elvish) go -t testing -r https://github.com/elves/elvish.git -m ./cmd/elvish -u ;; # I would love to -o generate, but they don't use the go-run method
-	fdupes) cc -t testing -r https://github.com/adrianlopezroche/fdupes.git -o autoreconf -b fdupes ;;
-	ffsend) rust -t testing -r https://github.com/timvisee/ffsend.git -b ffsend ;;
-	gdu) go -t testing -r https://github.com/dundee/gdu.git -m . ;;
-	gomplate) go -t testing -r https://github.com/hairyhenderson/gomplate.git -m ./cmd/gomplate ;;
-	gotop) go -t testing -r https://github.com/xxxserxxx/gotop.git -m ./cmd/gotop ;;
-	handlr) rust -t testing -r https://github.com/chmln/handlr.git -b handlr ;;
-	hyperfine) rust -t testing -r https://github.com/sharkdp/hyperfine.git -b hyperfine ;;
-	less) cc -t testing -r https://github.com/gwsw/less.git -o autoreconf ;;
-	libarchive) cc -t testing -r https://github.com/libarchive/libarchive.git -o autoreconf ;;
-	lua) cc -t testing -r https://github.com/lua/lua.git -u ;;
-	nmap) cc -t testing -r https://github.com/nmap/nmap.git ;;
-	pastel) rust -t testing -r https://github.com/sharkdp/pastel.git -b pastel ;;
-	pup) go -t testing -r https://github.com/ericchiang/pup.git -m . ;;
-	rsync) cc -t testing -r https://github.com/WayneD/rsync.git ;;
-	sd) rust -t testing -r https://github.com/chmln/sd.git -b sd ;;
-	sixel) cc -t testing -r https://github.com/saitoha/libsixel.git ;;
-	socat) cc -t testing -r git://repo.or.cz/socat.git ;;
-	toybox) cc -t testing -r https://github.com/landley/toybox.git -u ;;
-	watchexec) rust -t testing -r https://github.com/watchexec/watchexec.git -b watchexec ;;
-	zstd) cc -t testing -r https://github.com/facebook/zstd.git ;;
+	bash) cc -t testing -r https://git.savannah.gnu.org/git/bash.git @o u @o dumb_curses \
+			 @@configure --with-curses @@configure --disable-nls @@configure --enable-readline \
+			 @@configure --without-bash-malloc @@configure --with-installed-readline \
+			 @@configure --enable-static-link @m all @b bash ;;
+	drill) cc -t testing -r https://github.com/NLnetLabs/ldns.git @o autoreconf \
+			  @o libtoolize @@configure --with-drill @m all @b drill/drill ;;
+	duf) go -t testing -r https://github.com/muesli/duf.git @m . ;;
+	elvish) go -t testing -r https://github.com/elves/elvish.git @m ./cmd/elvish @o u ;; # I would love to -o generate, but they don't use the go-run method
+	fdupes) cc -t testing -r https://github.com/adrianlopezroche/fdupes.git @o autoreconf @o configure @m fdupes ;;
+	ffsend) rust -t testing -r https://github.com/timvisee/ffsend.git @b ffsend ;;
+	gdu) go -t testing -r https://github.com/dundee/gdu.git @m . ;;
+	gomplate) go -t testing -r https://github.com/hairyhenderson/gomplate.git @m ./cmd/gomplate ;;
+	gotop) go -t testing -r https://github.com/xxxserxxx/gotop.git @m ./cmd/gotop ;;
+	handlr) rust -t testing -r https://github.com/chmln/handlr.git @b handlr ;;
+	hyperfine) rust -t testing -r https://github.com/sharkdp/hyperfine.git @b hyperfine ;;
+	less) cc -t testing -r https://github.com/gwsw/less.git @o autoreconf @@configure --with-regex=pcre2 @b less ;;
+	libarchive) cc -t testing -r https://github.com/libarchive/libarchive.git @o autoreconf @m bsdtar \
+				@@apk xz-dev @@apk bzip2-dev @@apk zlib-dev @@apk libb2-dev @@apk lz4-dev @@apk zstd-dev \
+				@@apk xz-dev @@apk lzo-dev @@apk nettle-dev @@apk libxml2-dev @@apk expat-dev \
+				@@configure --enable-bsdtar=static @@configure --disable-bsdcat @@configure --disable-bsdcpio ;;
+	lua) cc -t testing -r https://github.com/lua/lua.git @o u @b lua ;;
+	nmap) cc -t testing -r https://github.com/nmap/nmap.git @b ncat/ncat ;;
+	pastel) rust -t testing -r https://github.com/sharkdp/pastel.git @b pastel ;;
+	pup) go -t testing -r https://github.com/ericchiang/pup.git @m . ;;
+	rsync) cc -t testing -r https://github.com/WayneD/rsync.git @o autoreconf @m reconfigure @m rsync @b rsync \
+		   @@apk acl-dev @@apk lz4-dev @@apk zlib-dev @@apk zstd-dev \
+		   @@configure --disable-xxhash @@configure --disable-md2man;;
+	sd) rust -t testing -r https://github.com/chmln/sd.git @b sd ;;
+	sixel) cc -t testing -r https://github.com/saitoha/libsixel.git @m all @b converters/img2sixel \
+		   @b converters/sixel2png @@apk gd-dev @@apk libjpeg-turbo-dev @@apk libpng-dev @o configure ;;
+	socat) cc -t testing -r git://repo.or.cz/socat.git @b socat ;;
+	toybox) cc -t testing -r https://github.com/landley/toybox.git @o u @b toybox ;;
+	watchexec) rust -t testing -r https://github.com/watchexec/watchexec.git @b watchexec ;;
+	zstd) cc -t testing -r https://github.com/facebook/zstd.git @@apk lz4-dev @@apk xz-dev @m zstd;;
 	#   - servers / occasional
-	caddy) go -t server -r https://github.com/caddyserver/caddy.git -m ./cmd/caddy ;;
-	dnsmasq) cc -t server -r git://thekelleys.org.uk/dnsmasq.git ;;
-	dropbear) cc -t server -r https://github.com/mkj/dropbear.git -o autoreconf ;;
-	echoip) go -t server -r https://github.com/mpolden/echoip.git -m ./cmd/echoip ;;
-	meilisearch)  rust -t server -r https://github.com/meilisearch/MeiliSearch.git -b meilisearch ;;
-	minio) go -t server -r https://github.com/minio/minio.git -m . ;;
-	unbound) cc -t server -r https://github.com/NLnetLabs/unbound.git ;;
-	yggdrasil) go -t server -r https://github.com/yggdrasil-network/yggdrasil-go.git -m './cmd/yggdrasil ./cmd/yggdrasilctl' ;;
+	caddy) go -t server -r https://github.com/caddyserver/caddy.git @m ./cmd/caddy ;;
+	dnsmasq) cc -t server -r git://thekelleys.org.uk/dnsmasq.git @b src/dnsmasq ;;
+	dropbear) cc -t server -r https://github.com/mkj/dropbear.git @o autoreconf @m all \
+			  @@configure --enable-static @b dbclient @b dropbear @b dropbearconvert @b dropbearkey ;;
+	echoip) go -t server -r https://github.com/mpolden/echoip.git @m ./cmd/echoip ;;
+	meilisearch)  rust -t server -r https://github.com/meilisearch/MeiliSearch.git @b meilisearch ;;
+	minio) go -t server -r https://github.com/minio/minio.git @m . ;;
+	unbound) cc -t server -r https://github.com/NLnetLabs/unbound.git @m unbound \
+			 @@apk expat-dev @@configure --enable-fully-static @@configure --prefix=/ ;;
+	yggdrasil) go -t server -r https://github.com/yggdrasil-network/yggdrasil-go.git @m ./cmd/yggdrasil @m ./cmd/yggdrasilctl ;;
 	esac
 done
 

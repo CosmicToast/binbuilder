@@ -1,6 +1,8 @@
 #!/bin/sh
+: ${DOCKER:=podman}
+
 b() {
-	docker build -t binbuilder:$1 $1
+	$DOCKER build -t binbuilder:$1 $1
 }
 
 b base

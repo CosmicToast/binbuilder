@@ -11,5 +11,3 @@ confc ncat
 
 make -C libpcap
 make -C ncat
-
-bin=ncat/ncat
