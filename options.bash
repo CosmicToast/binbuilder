@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # . options.bash inside of other builders - the common options go here
 
+# package options:
+# @@apk: for apk-based builders
+
 # @b|@@bin: binary name
 # -u|+u: enable/disable upx; on by default, unless there is no upx in .
 # -m|--mod: module for make/go/similar; used by multiple
@@ -9,7 +12,7 @@
 # --repotype: the type of repo it is (supported: .git). Populated from --repo if missing.
 # -t|--type: type of package, to reset the global per-builder one
 
-# options.sh recognizes the following opts:
+# options.bash recognizes the following opts:
 # * u | noupx: do not compress
 # builders may define their own, and should use has_opt
 
@@ -41,6 +44,11 @@ has_opt() {
 . /etc/os-release
 case "$ID" in
 esac
+
+# configured deps
+if let ${#apk[@]}; then
+	apk add "${apk[@]}"
+fi
 
 # utilities for cloners
 _git() {

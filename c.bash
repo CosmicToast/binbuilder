@@ -2,7 +2,6 @@
 set -e
 
 # extra accepted flags:
-# @@apk: install additional packages, will install them if set
 # @@configure: configure options, will run configure if set
 
 # extra accepted options:
@@ -23,11 +22,6 @@ export CXXFLAGS='-static -Os'
 export LDFLAGS='-all-static -static'
 
 # declarative extensions!
-
-# deps
-if let ${#apk[@]}; then
-	apk add "${apk[@]}"
-fi
 
 # - curses symlinks
 if has_opt dumb_curses; then
