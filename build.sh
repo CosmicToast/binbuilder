@@ -126,6 +126,7 @@ for i; do
 	socat) cc -t testing -r git://repo.or.cz/socat.git @b socat ;;
 	toybox) cc -t testing -r https://github.com/landley/toybox.git @o u @b toybox ;;
 	watchexec) rust -t testing -r https://github.com/watchexec/watchexec.git @b watchexec ;;
+	websocat) rust -t testing -r https://github.com/vi/websocat.git @b websocat @@rfeatures ssl ;;
 	zstd) cc -t testing -r https://github.com/facebook/zstd.git @@apk lz4-dev @@apk xz-dev @m zstd;;
 	#   - servers / occasional
 	caddy) go -t server -r https://github.com/caddyserver/caddy.git @m ./cmd/caddy ;;

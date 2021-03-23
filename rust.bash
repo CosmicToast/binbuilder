@@ -2,6 +2,7 @@
 set -e
 
 # extra accepted flags:
+# * @@rfeatures: list of --features to use
 
 # extra accepted options:
 # * nocache: do not use sccache
@@ -26,7 +27,11 @@ export OPENSSL_DIR=/usr
 export OPENSSL_NO_VENDOR=1
 export OPENSSL_STATIC=1
 
-cargo build --release --bins
+if ! let "${#rfeatures[@]}"; then
+	cargo build --release --bins
+else
+	cargo build --release --bins --features="${rfeatures[*]}"
+fi
 
 if ! let "${#bin[@]}"; then
 	bin="$(find target -type f -executable)"
