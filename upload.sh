@@ -14,7 +14,7 @@ for pattern; do
 	for f in $(find bin -type f -path "*$pattern*"); do
 		# what a mess lmao
 		ff=${f#*/}
-		oldp=$base/${ff%%-*}-
+		oldp=$base/${ff%%@*}@
 		new=$base/$ff
 		
 		oldk=$(mc ls --json $oldp | jq -r .key)

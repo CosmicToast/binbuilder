@@ -94,7 +94,7 @@ export BUILDER='https://minio.toast.cafe/bin/index.html'
 # util
 handlebin() {
 	has_opt u noupx || "$dir"/upx "$1"
-	cp "$1" "$dir"/bin/"$type"/"$(basename $1)-$ver"
+	cp "$1" "$dir"/bin/"$type"/"$(basename $1)@$ver"
 }
 clean() {
 	rm -r "$dir"/"$name"

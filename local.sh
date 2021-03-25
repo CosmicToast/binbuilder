@@ -9,7 +9,7 @@ mkdir -p ~/bin
 for i
 do
 	f="${i##*/}"
-	f="${f%%-*}"
+	f="${f%%@*}"
 	echo "installing $i to ~/bin/$f"
 	cp "$i" ~/bin/"$f"
 done
