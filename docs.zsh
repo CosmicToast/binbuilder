@@ -61,6 +61,9 @@ bare https://raw.githubusercontent.com/sharkdp/hyperfine/master/doc/hyperfine.1 
 # jq
 bare https://raw.githubusercontent.com/stedolan/jq/master/jq.1.prebuilt jq 1
 
+# minisign
+bare https://raw.githubusercontent.com/jedisct1/minisign/master/share/man/man1/minisign.1 minisign 1
+
 # mksh
 bare https://raw.githubusercontent.com/MirBSD/mksh/master/lksh.1 lksh 1
 bare https://raw.githubusercontent.com/MirBSD/mksh/master/mksh.1 mksh 1
