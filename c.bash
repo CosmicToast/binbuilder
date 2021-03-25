@@ -2,6 +2,7 @@
 set -e
 
 # extra accepted flags:
+# @@cmake: cmake options, will run cmake if set
 # @@configure: configure options, will run configure if set
 
 # extra accepted options:
@@ -11,6 +12,7 @@ set -e
 # * autoreconf: run autoreconf (compare to autogen.sh?)
 # * autogen.sh: run autogen.sh
 # * configure: run configure with no args (@@configure is empty)
+# * cmake: run cmake with no args (@@cmake is empty)
 
 # defaults
 type=c
@@ -52,6 +54,10 @@ fi
 
 if let ${#configure[@]} || has_opt configure; then
 	./configure "${configure[@]}"
+fi
+
+if let ${#cmake[@]} || has_opt cmake; then
+	cmake "${cmake[@]}"
 fi
 
 if [ -z "$mod" ]
