@@ -114,6 +114,8 @@ for i; do
 				@@apk xz-dev @@apk lzo-dev @@apk nettle-dev @@apk libxml2-dev @@apk expat-dev \
 				@@configure --enable-bsdtar=static @@configure --disable-bsdcat @@configure --disable-bsdcpio ;;
 	lua) cc -t testing -r https://github.com/lua/lua.git @o u @b lua ;;
+	minisign) cc -t testing -r https://github.com/jedisct1/minisign.git @@apk libsodium-dev \
+			  @@cmake -D @@cmake BUILD_STATIC_EXECUTABLES=1 -m all -b minisign ;;
 	nmap) cc -t testing -r https://github.com/nmap/nmap.git @b ncat/ncat ;;
 	pastel) rust -t testing -r https://github.com/sharkdp/pastel.git @b pastel ;;
 	pup) go -t testing -r https://github.com/ericchiang/pup.git @m . ;;
