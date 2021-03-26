@@ -47,13 +47,11 @@ __verify() {
 }
 
 parse() {
-	declare one two val arg
+	declare val arg
 	declare -g __options
 
 	while let $#; do
 		arg="$1"
-		one="${arg::1}"
-		two="${arg::2}"
 		# needed because we check -v
 		unset val; declare val
 		shift
