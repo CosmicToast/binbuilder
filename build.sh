@@ -93,6 +93,7 @@ for i; do
 	# this means it's either not worth distributing them regularly
 	# or they're "testing" packages
 	#   - testing
+	age) go -t testing -r https://github.com/FiloSottile/age.git @m ./cmd/age @m ./cmd/age-keygen ;;
 	bash) cc -t testing -r https://git.savannah.gnu.org/git/bash.git @o u @o dumb_curses \
 			 @@configure --with-curses @@configure --disable-nls @@configure --enable-readline \
 			 @@configure --without-bash-malloc @@configure --with-installed-readline \
