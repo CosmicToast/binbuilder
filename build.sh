@@ -89,10 +89,15 @@ for i; do
 	sk)    rust -r https://github.com/lotabout/skim.git      @b sk    ;;
 
 	# manual
-	# packages that aren't bult in "all" builds
-	# this means it's either not worth distributing them regularly
-	# or they're "testing" packages
-	#   - testing
+	# not automatically built ("all") repositories
+	# games: games! unfortunately most games aren't packageable like this, but some are!
+	# server: packages of servers, or servers + utilities (e.g dropbear)
+	# testing: packages that are either not stabilized, or are purposefully excluded from "all"
+
+	# Games
+	advent) cc -t games -r https://github.com/troglobit/advent4.git @o autogen.sh @o configure -m all -b src/advent ;;
+
+	# Testing
 	age) go -t testing -r https://github.com/FiloSottile/age.git @m ./cmd/age @m ./cmd/age-keygen ;;
 	bash) cc -t testing -r https://git.savannah.gnu.org/git/bash.git @o u @o dumb_curses \
 			 @@configure --with-curses @@configure --disable-nls @@configure --enable-readline \
@@ -134,7 +139,8 @@ for i; do
 	watchexec) rust -t testing -r https://github.com/watchexec/watchexec.git @b watchexec ;;
 	websocat) rust -t testing -r https://github.com/vi/websocat.git @b websocat @@rfeatures ssl ;;
 	zstd) cc -t testing -r https://github.com/facebook/zstd.git @@apk lz4-dev @@apk xz-dev @m zstd;;
-	#   - servers / occasional
+
+	# Server
 	caddy) go -t server -r https://github.com/caddyserver/caddy.git @m ./cmd/caddy ;;
 	dnsmasq) cc -t server -r git://thekelleys.org.uk/dnsmasq.git @b src/dnsmasq ;;
 	dropbear) cc -t server -r https://github.com/mkj/dropbear.git @o autoreconf @m all \
