@@ -11,13 +11,15 @@
 # -r|--repo|--src: the source to fetch
 # --repotype: the type of repo it is (supported: .git). Populated from --repo if missing.
 # -t|--type: type of package, to reset the global per-builder one
+# -v|--ver: version; will not override, use for fetch systems that don't set their own (like tar)
+# -s|--subver: subversion; see --ver comment
 
 # options.bash recognizes the following opts:
 # * u | noupx: do not compress
 # builders may define their own, and should use has_opt
 
 # long+short options
-declare -n b=bin m=mod n=name o=opts r=repo t=type
+declare -n b=bin m=mod n=name o=opts r=repo t=type v=ver s=subver
 
 # aliases
 declare -n src=repo
