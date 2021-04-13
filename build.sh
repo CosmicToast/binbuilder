@@ -96,6 +96,9 @@ for i; do
 
 	# Games
 	advent) cc -t games -r https://github.com/troglobit/advent4.git @o autogen.sh @o configure -m all -b src/advent ;;
+	ninvaders) cc -t games -r https://github.com/sf-refugees/ninvaders.git -b ninvaders ;;
+	nsnake) cc -t games -r https://github.com/alexdantas/nSnake.git -b bin/nsnake ;;
+	nudoku) cc -t games -r https://github.com/jubalh/nudoku.git @@apk gettext-tiny-dev @o autoreconf @@configure --disable-nls -m all -b src/nudoku ;;
 
 	# Testing
 	age) go -t testing -r https://github.com/FiloSottile/age.git @m ./cmd/age @m ./cmd/age-keygen ;;
