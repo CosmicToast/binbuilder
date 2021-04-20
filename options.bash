@@ -61,7 +61,7 @@ _git() {
 cgit() {
 	declare -g name subver ver
 	declare -l cacher
-	name="$(basename $1 .git)"
+	: ${name:="$(basename $1 .git)"}
 	cacher="$cache"/git/"$name".git
 	if [[ ! -d "$cacher" ]]; then
 		mkdir -p "$cache"
