@@ -152,6 +152,7 @@ for i; do
 	echoip) go -t server -r https://github.com/mpolden/echoip.git @m ./cmd/echoip ;;
 	gobgp) go -t server -r https://github.com/osrg/gobgp.git @m ./cmd/gobgp @m ./cmd/gobgpd ;;
 	meilisearch)  rust -t server -r https://github.com/meilisearch/MeiliSearch.git @b meilisearch ;;
+	miniflux) go -t server -r https://github.com/miniflux/v2.git -m miniflux -b miniflux -n miniflux ;;
 	minio) go -t server -r https://github.com/minio/minio.git @m . ;;
 	unbound) cc -t server -r https://github.com/NLnetLabs/unbound.git @m unbound \
 			 @@apk expat-dev @@configure --enable-fully-static @@configure --prefix=/ ;;
