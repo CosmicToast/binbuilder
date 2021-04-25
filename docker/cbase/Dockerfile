@@ -7,9 +7,9 @@ FROM binbuilder:base
 RUN apk add --no-cache \
 	# tools
 	autoconf autoconf-archive automake bash cmake file gettext-tiny \
-	libtool lld pkgconf \
+	libtool pkgconf \
 	# compiler libs
-	clang-dev libcxx-dev llvm-dev linux-dev musl-dev \
+	libcxx-dev llvm-dev linux-dev musl-dev \
 	# compiler compiler tools
 	bison flex \
 	# really common libraries, selected purely by feel
