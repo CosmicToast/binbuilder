@@ -58,6 +58,9 @@ bare https://raw.githubusercontent.com/junegunn/fzf/master/man/man1/fzf.1 fzf 1
 # hyperfine
 bare https://raw.githubusercontent.com/sharkdp/hyperfine/master/doc/hyperfine.1 hyperfine 1
 
+# jo
+bare https://github.com/jpmens/jo/blob/master/jo.1 jo 1
+
 # jq
 bare https://raw.githubusercontent.com/stedolan/jq/master/jq.1.prebuilt jq 1
 
