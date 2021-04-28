@@ -6,6 +6,7 @@ set -e
 # extra accepted options:
 # * cgo: enable cgo
 # * generate: runs go generate
+# * rename: rename every basename of each module to the corresponding binary name in order
 
 # defaults
 type=go
@@ -31,6 +32,14 @@ for mm in "${mod[@]}"; do
 	fi
 done
 [ -z "$mod" ] && make
+
+# handle renaming
+if has_opt rename && let "${#bin[@]} == ${#mod[@]}"; then
+	num=$(( ${#bin[@]} - 1 ))
+	for ii in $(seq 0 $num); do
+		mv $(basename ${mod[$ii]}) ${bin[@]}
+	done
+fi
 
 # wesmart
 if ! let ${#bin[@]} && let ${#mod[@]}; then
