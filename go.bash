@@ -4,6 +4,7 @@ set -e
 # extra accepted flags:
 
 # extra accepted options:
+# * cgo: enable cgo
 # * generate: runs go generate
 
 # defaults
@@ -12,7 +13,9 @@ type=go
 cd "$name"
 
 # build
-export CGO_ENABLED=0
+if ! has_opt cgo; then
+	export CGO_ENABLED=0
+fi
 export GOPATH="$cache"/go
 
 # generate step
