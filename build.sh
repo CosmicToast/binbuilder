@@ -107,7 +107,7 @@ for i; do
 			 @@configure --without-bash-malloc @@configure --with-installed-readline \
 			 @@configure --enable-static-link @m all @b bash @o mimalloc ;;
 	drill) cc -t testing -r https://github.com/NLnetLabs/ldns.git @o autoreconf \
-			  @o libtoolize @@configure --with-drill @m all @b drill/drill ;;
+			  @o libtoolize @@configure --with-drill @m all @b drill/drill @o mimalloc ;;
 	duf) go -t testing -r https://github.com/muesli/duf.git @m . ;;
 	elvish) go -t testing -r https://github.com/elves/elvish.git @m ./cmd/elvish @o u ;; # I would love to -o generate, but they don't use the go-run method
 	fdupes) cc -t testing -r https://github.com/adrianlopezroche/fdupes.git @o autoreconf @o configure @m fdupes ;;
