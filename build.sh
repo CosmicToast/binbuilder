@@ -149,7 +149,7 @@ for i; do
 	# Server
 	caddy) go -t server -r https://github.com/caddyserver/caddy.git @m ./cmd/caddy ;;
 	dnsmasq) cc -t server -r git://thekelleys.org.uk/dnsmasq.git @b src/dnsmasq @o mimalloc ;;
-	dropbear) cc -t server -r https://github.com/mkj/dropbear.git @o autoreconf @m all \
+	dropbear) cc -t server -r https://github.com/mkj/dropbear.git @o autoreconf @m all @o mimalloc \
 			  @@configure --enable-static @b dbclient @b dropbear @b dropbearconvert @b dropbearkey ;;
 	echoip) go -t server -r https://github.com/mpolden/echoip.git @m ./cmd/echoip ;;
 	gobgp) go -t server -r https://github.com/osrg/gobgp.git @m ./cmd/gobgp @m ./cmd/gobgpd ;;
