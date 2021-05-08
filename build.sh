@@ -110,7 +110,7 @@ for i; do
 			  @o libtoolize @@configure --with-drill @m all @b drill/drill @o mimalloc ;;
 	duf) go -t testing -r https://github.com/muesli/duf.git @m . ;;
 	elvish) go -t testing -r https://github.com/elves/elvish.git @m ./cmd/elvish @o u ;; # I would love to -o generate, but they don't use the go-run method
-	fdupes) cc -t testing -r https://github.com/adrianlopezroche/fdupes.git @o autoreconf @o configure @m fdupes ;;
+	fdupes) cc -t testing -r https://github.com/adrianlopezroche/fdupes.git @o autoreconf @o configure @m fdupes @o mimalloc ;;
 	ffsend) rust -t testing -r https://github.com/timvisee/ffsend.git @b ffsend ;;
 	fio) cc -t testing -r git://git.kernel.dk/fio.git @@configure --build-static @b fio @m fio @o mimalloc ;;
 	gdu) go -t testing -r https://github.com/dundee/gdu.git @m . ;;
