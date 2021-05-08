@@ -105,7 +105,7 @@ for i; do
 	bash) cc -t testing -r https://git.savannah.gnu.org/git/bash.git @o u @o dumb_curses \
 			 @@configure --with-curses @@configure --disable-nls @@configure --enable-readline \
 			 @@configure --without-bash-malloc @@configure --with-installed-readline \
-			 @@configure --enable-static-link @m all @b bash ;;
+			 @@configure --enable-static-link @m all @b bash @o mimalloc ;;
 	drill) cc -t testing -r https://github.com/NLnetLabs/ldns.git @o autoreconf \
 			  @o libtoolize @@configure --with-drill @m all @b drill/drill ;;
 	duf) go -t testing -r https://github.com/muesli/duf.git @m . ;;
