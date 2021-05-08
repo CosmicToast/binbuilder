@@ -53,16 +53,16 @@ if has_opt autogen.sh; then
 	./autogen.sh
 fi
 
+if has_opt mimalloc; then
+	export LDFLAGS="$LDFLAGS -lc++ /lib/mimalloc.o"
+fi
+
 if let ${#configure[@]} || has_opt configure; then
 	./configure "${configure[@]}"
 fi
 
 if let ${#cmake[@]} || has_opt cmake; then
 	cmake "${cmake[@]}"
-fi
-
-if has_opt mimalloc; then
-	export LDFLAGS="$LDFLAGS -lc++ /lib/mimalloc.o"
 fi
 
 if [ -z "$mod" ]
