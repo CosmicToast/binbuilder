@@ -140,7 +140,7 @@ for i; do
 		   @b converters/sixel2png @@apk gd-dev @@apk libjpeg-turbo-dev @@apk libpng-dev @o configure ;;
 	socat) cc -t testing -r git://repo.or.cz/socat.git @b socat @o mimalloc ;;
 	tmux) cc -t testing -r https://github.com/tmux/tmux.git @@apk libevent-dev \
-		  @o autogen.sh @o configure @b tmux @m all ;;
+		  @o autogen.sh @o configure @b tmux @m all @o mimalloc ;;
 	toybox) cc -t testing -r https://github.com/landley/toybox.git @o u @b toybox ;;
 	watchexec) rust -t testing -r https://github.com/watchexec/watchexec.git @b watchexec ;;
 	websocat) rust -t testing -r https://github.com/vi/websocat.git @b websocat @@rfeatures ssl ;;
