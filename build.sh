@@ -56,15 +56,15 @@ for i; do
 	# c
 	cmark)    cc -r https://github.com/commonmark/cmark.git ;;
 	entr)     cc -r https://github.com/eradman/entr.git @o configure @m entr ;;
-	foot)     cc -r https://codeberg.org/dnkl/foot.git @o u @b foot @b footclient ;; # TODO: xkbcommon
+	foot)     cc -r https://codeberg.org/dnkl/foot.git @o u @b foot @b footclient @o mimalloc ;; # TODO: xkbcommon
 	htop)     cc -r https://github.com/htop-dev/htop.git @o autogen.sh @o configure @m all @b htop ;;
 	iproute2) cc -r git://git.kernel.org/pub/scm/network/iproute2/iproute2.git @b ip/ip @b misc/ss ;;
 	jq) cc -r https://github.com/stedolan/jq.git @o git_submodules @o autoreconf \
-		@@configure --with-onigurama=builtin @@configure --disable-maintainer-mode @m all @b jq;;
-	mksh)     cc -r https://github.com/MirBSD/mksh.git @o u              ;;
-	rc)       cc -r https://github.com/muennich/rc.git @o u @b rc        ;;
-	samurai)  cc -r https://github.com/michaelforney/samurai.git @m samu ;;
-	scdoc)    cc -r https://git.sr.ht/~sircmpwn/scdoc @m scdoc --repotype=.git ;;
+		@@configure --with-onigurama=builtin @@configure --disable-maintainer-mode @m all @b jq ;;
+	mksh)     cc -r https://github.com/MirBSD/mksh.git @o u @o mimalloc              ;;
+	rc)       cc -r https://github.com/muennich/rc.git @o u @b rc @o mimalloc        ;;
+	samurai)  cc -r https://github.com/michaelforney/samurai.git @m samu @o mimalloc ;;
+	scdoc)    cc -r https://git.sr.ht/~sircmpwn/scdoc @m scdoc --repotype=.git @o mimalloc ;;
 
 	# go
 	chezmoi) go -r https://github.com/twpayne/chezmoi.git   @m .            ;;
@@ -96,8 +96,8 @@ for i; do
 
 	# Games
 	advent) cc -t games -r https://github.com/troglobit/advent4.git @o autogen.sh @o configure -m all -b src/advent ;;
-	ninvaders) cc -t games -r https://github.com/sf-refugees/ninvaders.git -b ninvaders ;;
-	nsnake) cc -t games -r https://github.com/alexdantas/nSnake.git -b bin/nsnake ;;
+	ninvaders) cc -t games -r https://github.com/sf-refugees/ninvaders.git -b ninvaders @o mimalloc ;;
+	nsnake) cc -t games -r https://github.com/alexdantas/nSnake.git -b bin/nsnake @o mimalloc ;;
 	nudoku) cc -t games -r https://github.com/jubalh/nudoku.git @@apk gettext-tiny-dev @o autoreconf @@configure --disable-nls -m all -b src/nudoku ;;
 
 	# Testing
@@ -112,43 +112,43 @@ for i; do
 	elvish) go -t testing -r https://github.com/elves/elvish.git @m ./cmd/elvish @o u ;; # I would love to -o generate, but they don't use the go-run method
 	fdupes) cc -t testing -r https://github.com/adrianlopezroche/fdupes.git @o autoreconf @o configure @m fdupes ;;
 	ffsend) rust -t testing -r https://github.com/timvisee/ffsend.git @b ffsend ;;
-	fio) cc -t testing -r git://git.kernel.dk/fio.git @@configure --build-static @b fio @m fio ;;
+	fio) cc -t testing -r git://git.kernel.dk/fio.git @@configure --build-static @b fio @m fio @o mimalloc ;;
 	gdu) go -t testing -r https://github.com/dundee/gdu.git @m . ;;
 	gomplate) go -t testing -r https://github.com/hairyhenderson/gomplate.git @m ./cmd/gomplate ;;
 	gotop) go -t testing -r https://github.com/xxxserxxx/gotop.git @m ./cmd/gotop ;;
 	handlr) rust -t testing -r https://github.com/chmln/handlr.git @b handlr ;;
 	hyperfine) rust -t testing -r https://github.com/sharkdp/hyperfine.git @b hyperfine ;;
-	janet) cc -t testing -r https://github.com/janet-lang/janet.git -m all -b build/janet ;;
+	janet) cc -t testing -r https://github.com/janet-lang/janet.git -m all -b build/janet @o mimalloc ;;
 	jo) cc -t testing -r https://github.com/jpmens/jo.git @o autoreconf @o configure -m jo -b jo ;;
 	less) cc -t testing -r https://github.com/gwsw/less.git @o autoreconf @@configure --with-regex=pcre2 @b less ;;
 	libarchive) cc -t testing -r https://github.com/libarchive/libarchive.git @o autoreconf @m bsdtar \
 				@@apk xz-dev @@apk bzip2-dev @@apk zlib-dev @@apk libb2-dev @@apk lz4-dev @@apk zstd-dev \
 				@@apk xz-dev @@apk lzo-dev @@apk nettle-dev @@apk libxml2-dev @@apk expat-dev \
 				@@configure --enable-bsdtar=static @@configure --disable-bsdcat @@configure --disable-bsdcpio ;;
-	lua) cc -t testing -r https://github.com/lua/lua.git @o u @b lua ;;
+	lua) cc -t testing -r https://github.com/lua/lua.git @o u @b lua @o mimalloc ;;
 	minisign) cc -t testing -r https://github.com/jedisct1/minisign.git @@apk libsodium-dev \
 			  @@cmake -D @@cmake BUILD_STATIC_EXECUTABLES=1 -m all -b minisign ;;
-	nmap) cc -t testing -r https://github.com/nmap/nmap.git @b ncat/ncat ;;
+	nmap) cc -t testing -r https://github.com/nmap/nmap.git @b ncat/ncat @o mimalloc ;;
 	pastel) rust -t testing -r https://github.com/sharkdp/pastel.git @b pastel ;;
 	pup) go -t testing -r https://github.com/ericchiang/pup.git @m . ;;
 	rsync) cc -t testing -r https://github.com/WayneD/rsync.git @o autoreconf @m reconfigure @m rsync @b rsync \
 		   @@apk acl-dev @@apk lz4-dev @@apk zlib-dev @@apk zstd-dev \
-		   @@configure --disable-xxhash @@configure --disable-md2man;;
+		   @@configure --disable-xxhash @@configure --disable-md2man ;;
 	sd) rust -t testing -r https://github.com/chmln/sd.git @b sd ;;
 	sic) rust -t testing -r https://github.com/foresterre/sic.git @@apk nasm -b sic ;;
 	sixel) cc -t testing -r https://github.com/saitoha/libsixel.git @m all @b converters/img2sixel \
 		   @b converters/sixel2png @@apk gd-dev @@apk libjpeg-turbo-dev @@apk libpng-dev @o configure ;;
-	socat) cc -t testing -r git://repo.or.cz/socat.git @b socat ;;
+	socat) cc -t testing -r git://repo.or.cz/socat.git @b socat @o mimalloc ;;
 	tmux) cc -t testing -r https://github.com/tmux/tmux.git @@apk libevent-dev \
 		  @o autogen.sh @o configure @b tmux @m all ;;
 	toybox) cc -t testing -r https://github.com/landley/toybox.git @o u @b toybox ;;
 	watchexec) rust -t testing -r https://github.com/watchexec/watchexec.git @b watchexec ;;
 	websocat) rust -t testing -r https://github.com/vi/websocat.git @b websocat @@rfeatures ssl ;;
-	zstd) cc -t testing -r https://github.com/facebook/zstd.git @@apk lz4-dev @@apk xz-dev @m zstd;;
+	zstd) cc -t testing -r https://github.com/facebook/zstd.git @@apk lz4-dev @@apk xz-dev @m zstd @o mimalloc ;;
 
 	# Server
 	caddy) go -t server -r https://github.com/caddyserver/caddy.git @m ./cmd/caddy ;;
-	dnsmasq) cc -t server -r git://thekelleys.org.uk/dnsmasq.git @b src/dnsmasq ;;
+	dnsmasq) cc -t server -r git://thekelleys.org.uk/dnsmasq.git @b src/dnsmasq @o mimalloc ;;
 	dropbear) cc -t server -r https://github.com/mkj/dropbear.git @o autoreconf @m all \
 			  @@configure --enable-static @b dbclient @b dropbear @b dropbearconvert @b dropbearkey ;;
 	echoip) go -t server -r https://github.com/mpolden/echoip.git @m ./cmd/echoip ;;

@@ -1,2 +1,2 @@
 #!/bin/sh
-clang *.c $CFLAGS $LDFLAGS -lncursesw -o ninvaders
+clang $CFLAGS $LDFLAGS -lncursesw -o ninvaders *.c
