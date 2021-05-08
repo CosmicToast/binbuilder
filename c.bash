@@ -13,6 +13,7 @@ set -e
 # * autogen.sh: run autogen.sh
 # * configure: run configure with no args (@@configure is empty)
 # * cmake: run cmake with no args (@@cmake is empty)
+# * mimalloc: add "-lc++ /lib/mimalloc.o" to LDFLAGS - verify this works before you use it!
 
 # defaults
 type=c
@@ -60,13 +61,17 @@ if let ${#cmake[@]} || has_opt cmake; then
 	cmake "${cmake[@]}"
 fi
 
+if has_opt mimalloc; then
+	export LDFLAGS="$LDFLAGS -lc++ /lib/mimalloc.o"
+fi
+
 if [ -z "$mod" ]
 then # custom handling
 	. "../c/$name.sh"
 else # assume plain makefile project
 	let ${#bin[@]} || declare -n bin=mod
 	echo "${mod[@]}"
-	for mm in "${mod[@]}"; do make "$mm"; done
+	for mm in "${mod[@]}"; do make V=1 VERBOSE=1 "$mm"; done
 fi
 
 # scripts may set multiple bins
