@@ -88,7 +88,7 @@ dir="$PWD"
 cache="$dir"/cache
 cclone "$src"
 
-export MAKEFLAGS="-j$(nproc)"
+export MAKEFLAGS="-j$(nproc) V=1 VERBOSE=1"
 export VERSION="$ver"
 export COMMIT="$subver"
 export BUILDER='https://minio.toast.cafe/bin/index.html'

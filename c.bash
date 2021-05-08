@@ -71,7 +71,7 @@ then # custom handling
 else # assume plain makefile project
 	let ${#bin[@]} || declare -n bin=mod
 	echo "${mod[@]}"
-	for mm in "${mod[@]}"; do make V=1 VERBOSE=1 "$mm"; done
+	for mm in "${mod[@]}"; do make "$mm"; done
 fi
 
 # scripts may set multiple bins
