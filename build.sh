@@ -59,7 +59,7 @@ for i; do
 	foot)     cc -r https://codeberg.org/dnkl/foot.git @o u @b foot @b footclient @o mimalloc ;; # TODO: xkbcommon
 	htop)     cc -r https://github.com/htop-dev/htop.git @o autogen.sh @o configure @m all @b htop @o mimalloc ;;
 	iproute2) cc -r git://git.kernel.org/pub/scm/network/iproute2/iproute2.git @b ip/ip @b misc/ss ;;
-	jq) cc -r https://github.com/stedolan/jq.git @o git_submodules @o autoreconf \
+	jq) cc -r https://github.com/stedolan/jq.git @o git_submodules @o autoreconf @o mimalloc \
 		@@configure --with-onigurama=builtin @@configure --disable-maintainer-mode @m all @b jq ;;
 	mksh)     cc -r https://github.com/MirBSD/mksh.git @o u @o mimalloc              ;;
 	rc)       cc -r https://github.com/muennich/rc.git @o u @b rc @o mimalloc        ;;
