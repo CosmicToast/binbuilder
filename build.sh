@@ -136,7 +136,7 @@ for i; do
 		   @@configure --disable-xxhash @@configure --disable-md2man ;;
 	sd) rust -t testing -r https://github.com/chmln/sd.git @b sd ;;
 	sic) rust -t testing -r https://github.com/foresterre/sic.git @@apk nasm -b sic ;;
-	sixel) cc -t testing -r https://github.com/saitoha/libsixel.git @m all @b converters/img2sixel \
+	sixel) cc -t testing -r https://github.com/saitoha/libsixel.git @m all @b converters/img2sixel @o mimalloc \
 		   @b converters/sixel2png @@apk gd-dev @@apk libjpeg-turbo-dev @@apk libpng-dev @o configure ;;
 	socat) cc -t testing -r git://repo.or.cz/socat.git @b socat @o mimalloc ;;
 	tmux) cc -t testing -r https://github.com/tmux/tmux.git @@apk libevent-dev \
