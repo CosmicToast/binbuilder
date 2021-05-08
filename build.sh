@@ -132,7 +132,7 @@ for i; do
 	pastel) rust -t testing -r https://github.com/sharkdp/pastel.git @b pastel ;;
 	pup) go -t testing -r https://github.com/ericchiang/pup.git @m . ;;
 	rsync) cc -t testing -r https://github.com/WayneD/rsync.git @o autoreconf @m reconfigure @m rsync @b rsync \
-		   @@apk acl-dev @@apk lz4-dev @@apk zlib-dev @@apk zstd-dev \
+		   @@apk acl-dev @@apk lz4-dev @@apk zlib-dev @@apk zstd-dev @o mimalloc \
 		   @@configure --disable-xxhash @@configure --disable-md2man ;;
 	sd) rust -t testing -r https://github.com/chmln/sd.git @b sd ;;
 	sic) rust -t testing -r https://github.com/foresterre/sic.git @@apk nasm -b sic ;;
