@@ -6,12 +6,10 @@ apk add pixman-dev wayland-dev wayland-protocols wayland-protocols-dev libxkbcom
 	libffi-dev bzip2-dev expat-dev
 
 CC=clang
-CFLAGS='-Os -pipe -fomit-frame-pointer -DFOOT_IME_ENABLED=1 -DNDEBUG'
-LDFLAGS='-Wl,-O1 -Wl,--as-needed'
+CFLAGS="$CFLAGS -DFOOT_IME_ENABLED=1 -DNDEBUG"
 
 LIBS="pixman-1 wayland-protocols wayland-client wayland-cursor xkbcommon fontconfig tllist fcft libffi"
 CFLAGS="$CFLAGS -c -I. -std=c17 -D_POSIX_C_SOURCE=200809L -D_GNU_SOURCE=200809L $(pkgconf --static --cflags $LIBS)"
-LDFLAGS="$LDFLAGS --static"
 LIBFLAGS="$(pkgconf --static --libs $LIBS)"
 
 SCANNER="$(pkgconf --variable=wayland_scanner wayland-scanner)"
@@ -33,4 +31,4 @@ find . -name '*.c' -exec "$CC" $CFLAGS '{}' -o '{}.o' \;
 # WARNING: ORDER IS IMPORTANT
 "$CC" $LDFLAGS xsnprintf.c.o client.c.o log.c.o xmalloc.c.o debug.c.o -o footclient
 rm client.c.o
-"$CC" *.o $LDFLAGS $LIBFLAGS -o foot
+"$CC" $LDFLAGS $LIBFLAGS *.o -o foot
