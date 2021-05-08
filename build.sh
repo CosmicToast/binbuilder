@@ -57,7 +57,7 @@ for i; do
 	cmark)    cc -r https://github.com/commonmark/cmark.git @o mimalloc ;;
 	entr)     cc -r https://github.com/eradman/entr.git @o configure @m entr ;;
 	foot)     cc -r https://codeberg.org/dnkl/foot.git @o u @b foot @b footclient @o mimalloc ;; # TODO: xkbcommon
-	htop)     cc -r https://github.com/htop-dev/htop.git @o autogen.sh @o configure @m all @b htop ;;
+	htop)     cc -r https://github.com/htop-dev/htop.git @o autogen.sh @o configure @m all @b htop @o mimalloc ;;
 	iproute2) cc -r git://git.kernel.org/pub/scm/network/iproute2/iproute2.git @b ip/ip @b misc/ss ;;
 	jq) cc -r https://github.com/stedolan/jq.git @o git_submodules @o autoreconf \
 		@@configure --with-onigurama=builtin @@configure --disable-maintainer-mode @m all @b jq ;;
