@@ -123,7 +123,7 @@ for i; do
 	less) cc -t testing -r https://github.com/gwsw/less.git @o autoreconf @@configure --with-regex=pcre2 @b less @o mimalloc ;;
 	libarchive) cc -t testing -r https://github.com/libarchive/libarchive.git @o autoreconf @m bsdtar \
 				@@apk xz-dev @@apk bzip2-dev @@apk zlib-dev @@apk libb2-dev @@apk lz4-dev @@apk zstd-dev \
-				@@apk xz-dev @@apk lzo-dev @@apk nettle-dev @@apk libxml2-dev @@apk expat-dev \
+				@@apk xz-dev @@apk lzo-dev @@apk nettle-dev @@apk libxml2-dev @@apk expat-dev @o mimalloc \
 				@@configure --enable-bsdtar=static @@configure --disable-bsdcat @@configure --disable-bsdcpio ;;
 	lua) cc -t testing -r https://github.com/lua/lua.git @o u @b lua @o mimalloc ;;
 	minisign) cc -t testing -r https://github.com/jedisct1/minisign.git @@apk libsodium-dev \
