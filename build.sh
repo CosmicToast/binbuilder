@@ -155,7 +155,7 @@ for i; do
 	meilisearch)  rust -t server -r https://github.com/meilisearch/MeiliSearch.git @b meilisearch ;;
 	miniflux) go -t server -r https://github.com/miniflux/v2.git -m miniflux -b miniflux -n miniflux ;;
 	minio) go -t server -r https://github.com/minio/minio.git @m . ;;
-	minio-console) go -r https://github.com/minio/console.git @o rename -m ./cmd/console -b minio-console -n minio-console ;;
+	minio-console) go -t server -r https://github.com/minio/console.git @o rename -m ./cmd/console -b minio-console -n minio-console ;;
 	unbound) cc -t server -r https://github.com/NLnetLabs/unbound.git @m unbound @o mimalloc \
 			 @@apk expat-dev @@configure --enable-fully-static @@configure --prefix=/ ;;
 	yggdrasil) go -t server -r https://github.com/yggdrasil-network/yggdrasil-go.git @m ./cmd/yggdrasil @m ./cmd/yggdrasilctl ;;
