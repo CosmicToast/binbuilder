@@ -113,7 +113,7 @@ for i; do
 	fdupes) cc -t testing -r https://github.com/adrianlopezroche/fdupes.git @o autoreconf @o configure @m fdupes @o mimalloc ;;
 	ffsend) rust -t testing -r https://github.com/timvisee/ffsend.git @b ffsend ;;
 	fio) cc -t testing -r git://git.kernel.dk/fio.git @@configure --build-static @b fio @m fio ;;
-	gdu) go -t testing -r https://github.com/dundee/gdu.git @m . ;;
+	gdu) go -t testing -r https://github.com/dundee/gdu.git @m ./cmd/gdu ;;
 	gomplate) go -t testing -r https://github.com/hairyhenderson/gomplate.git @m ./cmd/gomplate ;;
 	gotop) go -t testing -r https://github.com/xxxserxxx/gotop.git @m ./cmd/gotop ;;
 	handlr) rust -t testing -r https://github.com/chmln/handlr.git @b handlr ;;
@@ -142,7 +142,6 @@ for i; do
 	tmux) cc -t testing -r https://github.com/tmux/tmux.git @@apk libevent-dev \
 		  @o autogen.sh @o configure @b tmux @m all @o mimalloc ;;
 	toybox) cc -t testing -r https://github.com/landley/toybox.git @o u @b toybox ;;
-	watchexec) rust -t testing -r https://github.com/watchexec/watchexec.git @b watchexec ;;
 	websocat) rust -t testing -r https://github.com/vi/websocat.git @b websocat @@rfeatures ssl ;;
 	zstd) cc -t testing -r https://github.com/facebook/zstd.git @@apk lz4-dev @@apk xz-dev @m zstd @o mimalloc ;;
 
