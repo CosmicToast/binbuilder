@@ -128,6 +128,7 @@ for i; do
 	lua) cc -t testing -r https://github.com/lua/lua.git @o u @b lua @o mimalloc ;;
 	minisign) cc -t testing -r https://github.com/jedisct1/minisign.git @@apk libsodium-dev \
 			  @@cmake -D @@cmake BUILD_STATIC_EXECUTABLES=1 -m all -b minisign ;;
+	monolith) rust -t testing -r https://github.com/Y2Z/monolith.git @b monolith ;;
 	mrsh) cc -t testing -r https://github.com/emersion/mrsh.git @@configure --static @m mrsh @b mrsh @o u @o mimalloc ;;
 	nmap) cc -t testing -r https://github.com/nmap/nmap.git @b ncat/ncat @o mimalloc ;;
 	pastel) rust -t testing -r https://github.com/sharkdp/pastel.git @b pastel ;;
