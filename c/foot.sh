@@ -14,7 +14,7 @@ LIBFLAGS="$(pkgconf --static --libs $LIBS)"
 
 SCANNER="$(pkgconf --variable=wayland_scanner wayland-scanner)"
 PROTDIR="$(pkgconf --variable=pkgdatadir wayland-protocols)"
-PROTS="$(grep wayland_protocols_datadir meson.build | sed -e s/^[^\']*\'// -e s/\'.*$// -e 1d)"
+PROTS="$(grep wayland_protocols_datadir meson.build | grep -v staging | sed -e s/^[^\']*\'// -e s/\'.*$// -e 1d)"
 
 # generate
 ./generate-version.sh '(devel)' . version.h
