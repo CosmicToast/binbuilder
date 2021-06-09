@@ -120,6 +120,7 @@ for i; do
 	hyperfine) rust -t testing -r https://github.com/sharkdp/hyperfine.git @b hyperfine ;;
 	janet) cc -t testing -r https://github.com/janet-lang/janet.git -m all -b build/janet @o mimalloc ;;
 	jo) cc -t testing -r https://github.com/jpmens/jo.git @o autoreconf @o configure -m jo -b jo @o mimalloc ;;
+	k6) go -t testing -r https://github.com/k6io/k6.git -m . ;;
 	less) cc -t testing -r https://github.com/gwsw/less.git @o autoreconf @@configure --with-regex=pcre2 @b less @o mimalloc ;;
 	libarchive) cc -t testing -r https://github.com/libarchive/libarchive.git @o autoreconf @m bsdtar \
 				@@apk xz-dev @@apk bzip2-dev @@apk zlib-dev @@apk libb2-dev @@apk lz4-dev @@apk zstd-dev \
@@ -145,6 +146,7 @@ for i; do
 		  @o autogen.sh @o configure @b tmux @m all @o mimalloc ;;
 	toybox) cc -t testing -r https://github.com/landley/toybox.git @o u @b toybox ;;
 	websocat) rust -t testing -r https://github.com/vi/websocat.git @b websocat @@rfeatures ssl ;;
+	xh) rust -t testing -r https://github.com/ducaale/xh.git @b xh ;;
 	zstd) cc -t testing -r https://github.com/facebook/zstd.git @@apk lz4-dev @@apk xz-dev @m zstd @o mimalloc ;;
 
 	# Server
