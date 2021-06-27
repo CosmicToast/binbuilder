@@ -75,11 +75,28 @@ cgit() {
 	subver="$(git rev-parse --verify HEAD)"
 }
 
+ctar() {
+	apk add bsdtar # TODO: build into images
+
+	declare -g subver ver
+	declare -l cachef
+	cachef="$cache"/tar/"$(basename $1)"
+	if [[ ! -f "$cachef" ]]; then
+		mkdir -p "$cache"/tar
+		wget "$1" -O "$cachef"
+	fi
+
+	bsdtar -xf "$cachef"
+	echo "Using ${ver:?using tarball but no version specified} for $name."
+	subver=toast
+}
+
 # runs appropriate cloner based on repo name/repotype
 cclone() {
 	[[ -v repotype ]] || repotype=$1
 	case "$repotype" in
 	*.git) cgit "$@" ;;
+	http*.tar*) ctar "$@" ;;
 	*) exit 2 ;; # TODO: error
 	esac
 }
