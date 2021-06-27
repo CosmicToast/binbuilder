@@ -11,7 +11,7 @@ set -e
 # defaults
 type=go
 . ./options.bash
-cd "$name"
+cd "$pdir"
 
 # build
 if ! has_opt cgo; then

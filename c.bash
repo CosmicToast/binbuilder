@@ -18,7 +18,7 @@ set -e
 # defaults
 type=c
 . ./options.bash
-cd "$name"
+cd "$pdir"
 
 export CFLAGS='-Os'
 export CXXFLAGS='-static -Os'

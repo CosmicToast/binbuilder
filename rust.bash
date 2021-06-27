@@ -9,7 +9,7 @@ set -e
 
 type=rust
 . ./options.bash
-cd "$name"
+cd "$pdir"
 
 # build env
 export CARGO_HOME="$cache"/rust

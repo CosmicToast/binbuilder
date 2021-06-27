@@ -88,6 +88,18 @@ dir="$PWD"
 cache="$dir"/cache
 cclone "$src"
 
+# the project directory wasn't set
+# try to autodetect it
+if [[ -z $pdir ]]; then
+	for candidate in "$name" "$name-$ver"; do
+		if [[ -d "$dir"/"$candidate" ]]; then pdir="$dir"/"$candidate"; break; fi
+	done
+fi
+
+# in case it was set by hand to something invalid
+[[ -d $pdir ]] || pdir=
+echo "Detected project directory ${pdir:?could not detect project directory for $src}."
+
 export MAKEFLAGS="-j$(nproc) V=1 VERBOSE=1"
 export VERSION="$ver"
 export COMMIT="$subver"
@@ -99,7 +111,7 @@ handlebin() {
 	cp "$1" "$dir"/bin/"$type"/"$(basename $1)@$ver"
 }
 clean() {
-	rm -r "$dir"/"$name"
+	rm -r "$pdir"
 }
 
 mkdir -p bin/"$type"
