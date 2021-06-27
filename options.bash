@@ -64,7 +64,7 @@ cgit() {
 	: ${name:="$(basename $1 .git)"}
 	cacher="$cache"/git/"$name".git
 	if [[ ! -d "$cacher" ]]; then
-		mkdir -p "$cache"
+		mkdir -p "$cache"/git
 		_git clone --mirror "$1" "$cacher"
 	else
 		_git -C "$cacher" fetch --all -pP
