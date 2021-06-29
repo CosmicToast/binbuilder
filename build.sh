@@ -150,6 +150,7 @@ for i; do
 	zstd) cc -t testing -r https://github.com/facebook/zstd.git @@apk lz4-dev @@apk xz-dev @m zstd @o mimalloc ;;
 
 	# Server
+	bozohttpd) ver=20210227; cc -t server -r http://www.eterna.com.au/bozohttpd/bozohttpd-$ver.tar.bz2 -v $ver -n bozohttpd @o u ;;
 	caddy) go -t server -r https://github.com/caddyserver/caddy.git @m ./cmd/caddy ;;
 	dnsmasq) cc -t server -r git://thekelleys.org.uk/dnsmasq.git @b src/dnsmasq @o mimalloc ;;
 	dropbear) cc -t server -r https://github.com/mkj/dropbear.git @o autoreconf @m all @o mimalloc \
