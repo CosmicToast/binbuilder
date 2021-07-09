@@ -118,6 +118,7 @@ for i; do
 	gotop) go -t testing -r https://github.com/xxxserxxx/gotop.git @m ./cmd/gotop ;;
 	handlr) rust -t testing -r https://github.com/chmln/handlr.git @b handlr ;;
 	hyperfine) rust -t testing -r https://github.com/sharkdp/hyperfine.git @b hyperfine ;;
+	iperf3) cc -t testing -r https://github.com/esnet/iperf.git @@configure --enable-static-bin @m all @b src/iperf3 @o mimalloc ;;
 	janet) cc -t testing -r https://github.com/janet-lang/janet.git -m all -b build/janet @o mimalloc ;;
 	jo) cc -t testing -r https://github.com/jpmens/jo.git @o autoreconf @o configure -m jo -b jo @o mimalloc ;;
 	k6) go -t testing -r https://github.com/k6io/k6.git -m . ;;
