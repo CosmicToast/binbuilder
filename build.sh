@@ -48,7 +48,7 @@ for i; do
 	
 	# bundles
 	all)  $0 c go rust ;;
-	c)    $0 bash cmark entr foot htop iproute2 jo jq less lua minisign mksh rc rsync samurai scdoc zstd ;;
+	c)    $0 bash bsdtar cmark entr foot htop iproute2 jo jq less lua minisign mksh rc rsync samurai scdoc tmux zstd ;;
 	go)   $0 amfora chezmoi jump fzf gomplate ht mc micro rclone restic scc serve ;;
 	rust) $0 bat exa fd handlr rg rsign sk xh ;;
 
@@ -62,21 +62,27 @@ for i; do
 	foot)     cc -r https://codeberg.org/dnkl/foot.git @o u @b foot @b footclient @o mimalloc ;; # TODO: xkbcommon
 	htop)     cc -r https://github.com/htop-dev/htop.git @o autogen.sh @o configure @m all @b htop @o mimalloc ;;
 	iproute2) cc -r git://git.kernel.org/pub/scm/network/iproute2/iproute2.git @b ip/ip @b misc/ss ;;
-	jo)       cc -t testing -r https://github.com/jpmens/jo.git @o autoreconf @o configure -m jo -b jo @o mimalloc ;;
+	jo)       cc -r https://github.com/jpmens/jo.git @o autoreconf @o configure -m jo -b jo @o mimalloc ;;
 	jq)       cc -r https://github.com/stedolan/jq.git @o git_submodules @o autoreconf @o mimalloc \
 				@@configure --with-onigurama=builtin @@configure --disable-maintainer-mode @m all @b jq ;;
-	less)     cc -t testing -r https://github.com/gwsw/less.git @o autoreconf @@configure --with-regex=pcre2 @b less @o mimalloc ;;
-	lua)      cc -t testing -r https://github.com/lua/lua.git @o u @b lua @o mimalloc ;;
-	minisign) cc -t testing -r https://github.com/jedisct1/minisign.git @@apk libsodium-dev \
+	less)     cc -r https://github.com/gwsw/less.git @o autoreconf @@configure --with-regex=pcre2 @b less @o mimalloc ;;
+	bsdtar)   cc -r https://github.com/libarchive/libarchive.git @o autoreconf @m bsdtar \
+				@@apk xz-dev @@apk bzip2-dev @@apk zlib-dev @@apk libb2-dev @@apk lz4-dev @@apk zstd-dev \
+				@@apk xz-dev @@apk lzo-dev @@apk nettle-dev @@apk libxml2-dev @@apk expat-dev @o mimalloc \
+				@@configure --enable-bsdtar=static @@configure --disable-bsdcat @@configure --disable-bsdcpio ;;
+	lua)      cc -r https://github.com/lua/lua.git @o u @b lua @o mimalloc ;;
+	minisign) cc -r https://github.com/jedisct1/minisign.git @@apk libsodium-dev \
 				@@cmake -D @@cmake BUILD_STATIC_EXECUTABLES=1 -m all -b minisign ;;
 	mksh)     cc -r https://github.com/MirBSD/mksh.git @o u @o mimalloc               ;;
 	rc)       cc -r https://github.com/muennich/rc.git @o u @b rc @o mimalloc         ;;
-	rsync)    cc -t testing -r https://github.com/WayneD/rsync.git @o autoreconf @m reconfigure @m rsync @b rsync \
+	rsync)    cc -r https://github.com/WayneD/rsync.git @o autoreconf @m reconfigure @m rsync @b rsync \
 			   @@apk acl-dev @@apk lz4-dev @@apk zlib-dev @@apk zstd-dev @o mimalloc \
 			   @@configure --disable-xxhash @@configure --disable-md2man ;;
 	samurai)  cc -r https://github.com/michaelforney/samurai.git @m samu @o mimalloc  ;;
 	scdoc)    cc -r https://git.sr.ht/~sircmpwn/scdoc @m scdoc --repotype=.git @o mimalloc ;;
-	zstd)     cc -t testing -r https://github.com/facebook/zstd.git @@apk lz4-dev @@apk xz-dev @m zstd @o mimalloc ;;
+	tmux)     cc -r https://github.com/tmux/tmux.git @@apk libevent-dev \
+				@o autogen.sh @o configure @b tmux @m all @o mimalloc ;;
+	zstd)     cc -r https://github.com/facebook/zstd.git @@apk lz4-dev @@apk xz-dev @m zstd @o mimalloc ;;
 
 	# go
 	chezmoi) go -r https://github.com/twpayne/chezmoi.git   @m .            ;;
@@ -90,18 +96,18 @@ for i; do
 	serve)   go -r https://github.com/syntaqx/serve.git     @m ./cmd/serve  ;;
 	# these are long, ok?
 	amfora) go -r https://github.com/makeworld-the-better-one/amfora.git @m amfora ;;
-	gomplate) go -t testing -r https://github.com/hairyhenderson/gomplate.git @m ./cmd/gomplate ;;
+	gomplate) go -r https://github.com/hairyhenderson/gomplate.git @m ./cmd/gomplate ;;
 	micro) go -r https://github.com/zyedidia/micro.git @m build-all @b micro ;;
 
 	# rust
 	bat)    rust -r https://github.com/sharkdp/bat.git        @b bat   ;;
 	exa)    rust -r https://github.com/ogham/exa.git          @b exa   ;;
 	fd)     rust -r https://github.com/sharkdp/fd.git         @b fd    ;;
-	handlr) rust -t testing -r https://github.com/chmln/handlr.git @b handlr ;;
+	handlr) rust -r https://github.com/chmln/handlr.git @b handlr ;;
 	rg)     rust -r https://github.com/BurntSushi/ripgrep.git @b rg    ;;
 	rsign)  rust -r https://github.com/jedisct1/rsign2.git    @b rsign ;;
 	sk)     rust -r https://github.com/lotabout/skim.git      @b sk    ;;
-	xh)     rust -t testing -r https://github.com/ducaale/xh.git @b xh ;;
+	xh)     rust -r https://github.com/ducaale/xh.git @b xh ;;
 
 	# manual
 	# not automatically built ("all") repositories
@@ -130,10 +136,6 @@ for i; do
 	iperf3) cc -t testing -r https://github.com/esnet/iperf.git @@configure --enable-static-bin @m all @b src/iperf3 @o mimalloc ;;
 	janet) cc -t testing -r https://github.com/janet-lang/janet.git -m all -b build/janet @o mimalloc ;;
 	k6) go -t testing -r https://github.com/k6io/k6.git -m . ;;
-	libarchive) cc -t testing -r https://github.com/libarchive/libarchive.git @o autoreconf @m bsdtar \
-				@@apk xz-dev @@apk bzip2-dev @@apk zlib-dev @@apk libb2-dev @@apk lz4-dev @@apk zstd-dev \
-				@@apk xz-dev @@apk lzo-dev @@apk nettle-dev @@apk libxml2-dev @@apk expat-dev @o mimalloc \
-				@@configure --enable-bsdtar=static @@configure --disable-bsdcat @@configure --disable-bsdcpio ;;
 	monolith) rust -t testing -r https://github.com/Y2Z/monolith.git @b monolith ;;
 	mrsh) cc -t testing -r https://github.com/emersion/mrsh.git @@configure --static @m mrsh @b mrsh @o u @o mimalloc ;;
 	nmap) cc -t testing -r https://github.com/nmap/nmap.git @b ncat/ncat @o mimalloc ;;
@@ -144,8 +146,6 @@ for i; do
 	sixel) cc -t testing -r https://github.com/saitoha/libsixel.git @m all @b converters/img2sixel @o mimalloc \
 		   @b converters/sixel2png @@apk gd-dev @@apk libjpeg-turbo-dev @@apk libpng-dev @o configure ;;
 	socat) cc -t testing -r git://repo.or.cz/socat.git @b socat @o mimalloc ;;
-	tmux) cc -t testing -r https://github.com/tmux/tmux.git @@apk libevent-dev \
-		  @o autogen.sh @o configure @b tmux @m all @o mimalloc ;;
 	toybox) cc -t testing -r https://github.com/landley/toybox.git @o u @b toybox ;;
 	websocat) rust -t testing -r https://github.com/vi/websocat.git @b websocat @@rfeatures ssl ;;
 
