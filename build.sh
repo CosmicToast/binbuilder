@@ -146,6 +146,7 @@ for i; do
 	sixel) cc -t testing -r https://github.com/saitoha/libsixel.git @m all @b converters/img2sixel @o mimalloc \
 		   @b converters/sixel2png @@apk gd-dev @@apk libjpeg-turbo-dev @@apk libpng-dev @o configure ;;
 	socat) cc -t testing -r git://repo.or.cz/socat.git @b socat @o mimalloc ;;
+	step) go -t testing -r https://github.com/smallstep/cli.git -n step @m ./cmd/step ;;
 	toybox) cc -t testing -r https://github.com/landley/toybox.git @o u @b toybox ;;
 	websocat) rust -t testing -r https://github.com/vi/websocat.git @b websocat @@rfeatures ssl ;;
 
