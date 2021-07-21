@@ -125,6 +125,7 @@ for i; do
 	age) go -t testing -r https://github.com/FiloSottile/age.git @m ./cmd/age @m ./cmd/age-keygen ;;
 	drill) cc -t testing -r https://github.com/NLnetLabs/ldns.git @o autoreconf \
 			  @o libtoolize @@configure --with-drill @m all @b drill/drill @o mimalloc ;;
+	dog) rust -t testing -r https://github.com/ogham/dog.git @b dog @@rfeatures with_idna @o nofeat ;;
 	duf) go -t testing -r https://github.com/muesli/duf.git @m . ;;
 	elvish) go -t testing -r https://github.com/elves/elvish.git @m ./cmd/elvish @o u ;; # I would love to -o generate, but they don't use the go-run method
 	fdupes) cc -t testing -r https://github.com/adrianlopezroche/fdupes.git @o autoreconf @o configure @m fdupes @o mimalloc ;;
