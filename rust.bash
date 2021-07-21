@@ -6,6 +6,7 @@ set -e
 
 # extra accepted options:
 # * nocache: do not use sccache
+# * nofeat: pass --no-default-features
 
 type=rust
 . ./options.bash
@@ -27,10 +28,13 @@ export OPENSSL_DIR=/usr
 export OPENSSL_NO_VENDOR=1
 export OPENSSL_STATIC=1
 
+cargo_opts=(--release --bins)
+has_opt nofeat && cargo_opts+=(--no-default-features)
+
 if ! let "${#rfeatures[@]}"; then
-	cargo build --release --bins
+	cargo build "${cargo_opts[@]}"
 else
-	cargo build --release --bins --features="${rfeatures[*]}"
+	cargo build "${cargo_opts[@]}" --features="${rfeatures[*]}"
 fi
 
 if ! let "${#bin[@]}"; then
