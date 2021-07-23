@@ -150,6 +150,7 @@ for i; do
 	step) go -t testing -r https://github.com/smallstep/cli.git -n step @m ./cmd/step ;;
 	toybox) cc -t testing -r https://github.com/landley/toybox.git @o u @b toybox ;;
 	websocat) rust -t testing -r https://github.com/vi/websocat.git @b websocat @@rfeatures ssl ;;
+	xsv) rust -t testing -r https://github.com/BurntSushi/xsv.git @b xsv ;;
 
 	# Server
 	bozohttpd) ver=20210227; cc -t server -r http://www.eterna.com.au/bozohttpd/bozohttpd-$ver.tar.bz2 -v $ver -n bozohttpd @o u ;;
