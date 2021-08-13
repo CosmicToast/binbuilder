@@ -6,7 +6,7 @@
 # utils
 common() {
 	# disable upx if it's missing
-	[ -f "$PWD/upx" ] || set -- "$@" -u
+	[ -f "$PWD/upx" ] || set -- "$@" @o u
 	# allow picking between docker and local runners
 	case "$RUNNER" in
 	docker) container docker "$@" ;;

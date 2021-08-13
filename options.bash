@@ -5,7 +5,6 @@
 # @@apk: for apk-based builders
 
 # @b|@@bin: binary name
-# -u|+u: enable/disable upx; on by default, unless there is no upx in .
 # -m|--mod: module for make/go/similar; used by multiple
 # @o|@@opts: options, we have a helper function
 # -r|--repo|--src: the source to fetch
