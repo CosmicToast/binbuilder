@@ -128,6 +128,7 @@ for i; do
 	dog) rust -t testing -r https://github.com/ogham/dog.git @b dog @@rfeatures with_idna @o nofeat ;;
 	duf) go -t testing -r https://github.com/muesli/duf.git @m . ;;
 	elvish) go -t testing -r https://github.com/elves/elvish.git @m ./cmd/elvish @o u ;; # I would love to -o generate, but they don't use the go-run method
+	f2) go -t testing -r https://github.com/ayoisaiah/f2.git @m ./cmd/f2 ;;
 	fdupes) cc -t testing -r https://github.com/adrianlopezroche/fdupes.git @o autoreconf @o configure @m fdupes @o mimalloc ;;
 	ffsend) rust -t testing -r https://github.com/timvisee/ffsend.git @b ffsend ;;
 	fio) cc -t testing -r git://git.kernel.dk/fio.git @@configure --build-static @b fio @m fio ;;
