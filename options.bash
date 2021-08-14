@@ -10,7 +10,7 @@
 # -r|--repo|--src: the source to fetch
 # --repotype: the type of repo it is (supported: .git). Populated from --repo if missing.
 # -t|--type: type of package, to reset the global per-builder one
-# -v|--ver: version; will not override, use for fetch systems that don't set their own (like tar)
+# -v|--ver: version; use for fetch systems that don't set their own (like tar) or to override bad ones
 # -s|--subver: subversion; see --ver comment
 
 # options.bash recognizes the following opts:
@@ -70,8 +70,8 @@ cgit() {
 	fi
 
 	_git clone "$1" --reference "$cacher" "$name"
-	ver="$(git -C $name describe --tags --always)"
-	subver="$(git rev-parse --verify HEAD)"
+	: ${ver:="$(git -C $name describe --tags --always)"}
+	: ${subver:="$(git rev-parse --verify HEAD)"}
 }
 
 ctar() {
