@@ -154,6 +154,7 @@ for i; do
 	xsv) rust -t testing -r https://github.com/BurntSushi/xsv.git @b xsv ;;
 
 	# Server
+	beanstalkd) cc -t server -r https://github.com/beanstalkd/beanstalkd.git @o mimalloc @m all @b beanstalkd ;;
 	bozohttpd) ver=20210227; cc -t server -r http://www.eterna.com.au/bozohttpd/bozohttpd-$ver.tar.bz2 -v $ver -n bozohttpd @o u ;;
 	caddy) go -t server -r https://github.com/caddyserver/caddy.git @m ./cmd/caddy ;;
 	dnsmasq) cc -t server -r git://thekelleys.org.uk/dnsmasq.git @b src/dnsmasq @o mimalloc ;;
@@ -166,6 +167,8 @@ for i; do
 	minio) go -t server -r https://github.com/minio/minio.git @m . ;;
 	minio-console) go -t server -r https://github.com/minio/console.git @o rename -m ./cmd/console -b minio-console -n minio-console ;;
 	redir) cc -t server -r https://github.com/troglobit/redir.git @o autogen.sh @o configure @o u -m redir ;;
+	redis) cc -t server -r https://github.com/redis/redis.git -v unstable @o mimalloc @m MALLOC=libc \
+		   @b src/redis-benchmark @b src/redis-check-aof @b src/redis-check-rdb @b src/redis-cli @b src/redis-sentinel @b src/redis-server ;;
 	unbound) cc -t server -r https://github.com/NLnetLabs/unbound.git @m unbound @o mimalloc \
 			 @@apk expat-dev @@configure --enable-fully-static @@configure --prefix=/ ;;
 	yggdrasil) go -t server -r https://github.com/yggdrasil-network/yggdrasil-go.git @m ./cmd/yggdrasil @m ./cmd/yggdrasilctl ;;
