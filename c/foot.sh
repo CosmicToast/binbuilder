@@ -6,7 +6,7 @@ apk add pixman-dev wayland-dev wayland-protocols wayland-protocols-dev libxkbcom
 	libffi-dev bzip2-dev expat-dev
 
 CC=clang
-CFLAGS="$CFLAGS -DFOOT_IME_ENABLED=1 -DFOOT_GRAPHEME_CLUSTERING=1 -DNDEBUG"
+CFLAGS="$CFLAGS -DFOOT_DEFAULT_TERM=\"foot\" -DFOOT_GRAPHEME_CLUSTERING=1 -DFOOT_IME_ENABLED=1 -DNDEBUG"
 
 LIBS="pixman-1 wayland-protocols wayland-client wayland-cursor xkbcommon fontconfig tllist fcft libffi libutf8proc"
 CFLAGS="$CFLAGS -c -I. -std=c17 -D_POSIX_C_SOURCE=200809L -D_GNU_SOURCE=200809L $(pkgconf --static --cflags $LIBS)"
