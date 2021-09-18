@@ -162,7 +162,6 @@ for i; do
 			  @@configure --enable-static @b dbclient @b dropbear @b dropbearconvert @b dropbearkey ;;
 	echoip) go -t server -r https://github.com/mpolden/echoip.git @m ./cmd/echoip ;;
 	gobgp) go -t server -r https://github.com/osrg/gobgp.git @m ./cmd/gobgp @m ./cmd/gobgpd ;;
-	meilisearch)  rust -t server -r https://github.com/meilisearch/MeiliSearch.git @b meilisearch ;;
 	miniflux) go -t server -r https://github.com/miniflux/v2.git -m miniflux -b miniflux -n miniflux ;;
 	minio) go -t server -r https://github.com/minio/minio.git @m . ;;
 	minio-console) go -t server -r https://github.com/minio/console.git @o rename -m ./cmd/console -b minio-console -n minio-console ;;
