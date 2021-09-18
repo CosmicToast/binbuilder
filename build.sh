@@ -150,6 +150,7 @@ for i; do
 		   @b converters/sixel2png @@apk gd-dev @@apk libjpeg-turbo-dev @@apk libpng-dev @o configure ;;
 	socat) cc -t testing -r git://repo.or.cz/socat.git @b socat @o mimalloc ;;
 	step) go -t testing -r https://github.com/smallstep/cli.git -n step @m ./cmd/step ;;
+	stress) cc -t testing -r https://github.com/ColinIanKing/stress-ng.git @m makeconfig @m stress-ng @b stress-ng ;;
 	toybox) cc -t testing -r https://github.com/landley/toybox.git @o u @b toybox ;;
 	websocat) rust -t testing -r https://github.com/vi/websocat.git @b websocat @@rfeatures ssl ;;
 	xsv) rust -t testing -r https://github.com/BurntSushi/xsv.git @b xsv ;;
