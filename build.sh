@@ -142,6 +142,7 @@ for i; do
 	mrsh) cc -t testing -r https://github.com/emersion/mrsh.git @@configure --static @m mrsh @b mrsh @o u @o mimalloc ;;
 	nmap) cc -t testing -r https://github.com/nmap/nmap.git @b ncat/ncat @o mimalloc ;;
 	pastel) rust -t testing -r https://github.com/sharkdp/pastel.git @b pastel ;;
+	pv) cc -t testing -r https://github.com/a-j-wood/pv.git @b pv @o u ;;
 	pup) go -t testing -r https://github.com/ericchiang/pup.git @m . ;;
 	sd) rust -t testing -r https://github.com/chmln/sd.git @b sd ;;
 	sic) rust -t testing -r https://github.com/foresterre/sic.git @@apk nasm -b sic ;;
