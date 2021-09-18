@@ -1,6 +1,6 @@
 #!/bin/sh
 case "$1" in
-	all) "$0" c/ go/ rust/ server/ testing/ ;;
+	all) "$0" c/ go/ rust/ games/ server/ testing/ ;;
 	'') "$0" c/ go/ rust/ testing/ ;;
 esac
 
