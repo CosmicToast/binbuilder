@@ -123,6 +123,7 @@ for i; do
 
 	# Testing
 	age) go -t testing -r https://github.com/FiloSottile/age.git @m ./cmd/age @m ./cmd/age-keygen ;;
+	bottom) rust -t testing -r https://github.com/ClementTsang/bottom.git @b btm ;;
 	drill) cc -t testing -r https://github.com/NLnetLabs/ldns.git @o autoreconf \
 			  @o libtoolize @@configure --with-drill @m all @b drill/drill @o mimalloc ;;
 	dog) rust -t testing -r https://github.com/ogham/dog.git @b dog @@rfeatures with_idna @o nofeat ;;
@@ -142,6 +143,7 @@ for i; do
 	mrsh) cc -t testing -r https://github.com/emersion/mrsh.git @@configure --static @m mrsh @b mrsh @o u @o mimalloc ;;
 	nmap) cc -t testing -r https://github.com/nmap/nmap.git @b ncat/ncat @o mimalloc ;;
 	pastel) rust -t testing -r https://github.com/sharkdp/pastel.git @b pastel ;;
+	procs) rust -t testing -r https://github.com/dalance/procs.git @b procs ;;
 	pv) cc -t testing -r https://github.com/a-j-wood/pv.git @b pv @o u ;;
 	pup) go -t testing -r https://github.com/ericchiang/pup.git @m . ;;
 	sd) rust -t testing -r https://github.com/chmln/sd.git @b sd ;;
@@ -152,6 +154,7 @@ for i; do
 	step) go -t testing -r https://github.com/smallstep/cli.git -n step @m ./cmd/step ;;
 	stress) cc -t testing -r https://github.com/ColinIanKing/stress-ng.git @m makeconfig @m stress-ng @b stress-ng ;;
 	toybox) cc -t testing -r https://github.com/landley/toybox.git @o u @b toybox ;;
+	viddy) go -t testing -r https://github.com/sachaos/viddy.git @m . ;;
 	websocat) rust -t testing -r https://github.com/vi/websocat.git @b websocat @@rfeatures ssl ;;
 	xsv) rust -t testing -r https://github.com/BurntSushi/xsv.git @b xsv ;;
 
