@@ -138,6 +138,7 @@ for i; do
 	hyperfine) rust -t testing -r https://github.com/sharkdp/hyperfine.git @b hyperfine ;;
 	iperf3) cc -t testing -r https://github.com/esnet/iperf.git @@configure --enable-static-bin @m all @b src/iperf3 @o mimalloc ;;
 	janet) cc -t testing -r https://github.com/janet-lang/janet.git -m all -b build/janet @o mimalloc ;;
+	kalker) rust -t testing -r https://github.com/PaddiM8/kalker.git -b kalker ;;
 	k6) go -t testing -r https://github.com/k6io/k6.git -m . ;;
 	monolith) rust -t testing -r https://github.com/Y2Z/monolith.git @b monolith ;;
 	mrsh) cc -t testing -r https://github.com/emersion/mrsh.git @@configure --static @m mrsh @b mrsh @o u @o mimalloc ;;
