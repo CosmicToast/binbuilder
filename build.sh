@@ -72,7 +72,7 @@ for i; do
 				@@configure --enable-bsdtar=static @@configure --disable-bsdcat @@configure --disable-bsdcpio ;;
 	lua)      cc -r https://github.com/lua/lua.git @o u @b lua @o mimalloc ;;
 	minisign) cc -r https://github.com/jedisct1/minisign.git @@apk libsodium-dev \
-				@@cmake -D @@cmake BUILD_STATIC_EXECUTABLES=1 -m all -b minisign ;;
+				@@cmake -DBUILD_STATIC_EXECUTABLES=1 -m all -b minisign ;;
 	mksh)     cc -r https://github.com/MirBSD/mksh.git @o u @o mimalloc               ;;
 	rc)       cc -r https://github.com/muennich/rc.git @o u @b rc @o mimalloc         ;;
 	rsync)    cc -r https://github.com/WayneD/rsync.git @o autoreconf @m reconfigure @m rsync @b rsync \
@@ -124,6 +124,7 @@ for i; do
 	# Testing
 	age) go -t testing -r https://github.com/FiloSottile/age.git @m ./cmd/age @m ./cmd/age-keygen ;;
 	bottom) rust -t testing -r https://github.com/ClementTsang/bottom.git @b btm ;;
+	btop) cc -t testing -r https://github.com/aristocratos/btop.git -b bin/btop ;;
 	drill) cc -t testing -r https://github.com/NLnetLabs/ldns.git @o autoreconf \
 			  @o libtoolize @@configure --with-drill @m all @b drill/drill @o mimalloc ;;
 	dog) rust -t testing -r https://github.com/ogham/dog.git @b dog @@rfeatures with_idna @o nofeat ;;
@@ -150,7 +151,7 @@ for i; do
 	sd) rust -t testing -r https://github.com/chmln/sd.git @b sd ;;
 	sic) rust -t testing -r https://github.com/foresterre/sic.git @@apk nasm -b sic ;;
 	sixel) cc -t testing -r https://github.com/saitoha/libsixel.git @m all @b converters/img2sixel @o mimalloc \
-		   @b converters/sixel2png @@apk gd-dev @@apk libjpeg-turbo-dev @@apk libpng-dev @o configure ;;
+		   @b converters/sixel2png @@apk gd-dev @@apk libjpeg-turbo-dev @@apk libpng-dev @o configure @o all_static ;;
 	socat) cc -t testing -r git://repo.or.cz/socat.git @b socat @o mimalloc ;;
 	step) go -t testing -r https://github.com/smallstep/cli.git -n step @m ./cmd/step ;;
 	stress) cc -t testing -r https://github.com/ColinIanKing/stress-ng.git @m makeconfig @m stress-ng @b stress-ng ;;
@@ -168,7 +169,8 @@ for i; do
 			  @@configure --enable-static @b dbclient @b dropbear @b dropbearconvert @b dropbearkey ;;
 	echoip) go -t server -r https://github.com/mpolden/echoip.git @m ./cmd/echoip ;;
 	gobgp) go -t server -r https://github.com/osrg/gobgp.git @m ./cmd/gobgp @m ./cmd/gobgpd ;;
-	miniflux) go -t server -r https://github.com/miniflux/v2.git -m miniflux -b miniflux -n miniflux ;;
+	miniflux) go -t server -r https://github.com/miniflux/v2.git -m ./ -b miniflux.app -n miniflux @@bnames miniflux \
+			  --versionvar miniflux.app/version.Version --commitvar miniflux.app/version.Commit --buildvar miniflux.app/version.BuildDate ;;
 	minio) go -t server -r https://github.com/minio/minio.git @m . ;;
 	minio-console) go -t server -r https://github.com/minio/console.git @o rename -m ./cmd/console -b minio-console -n minio-console ;;
 	redir) cc -t server -r https://github.com/troglobit/redir.git @o autogen.sh @o configure @o u -m redir ;;
