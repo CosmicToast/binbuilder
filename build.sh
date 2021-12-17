@@ -48,7 +48,7 @@ for i; do
 	
 	# bundles
 	all)  $0 c go rust ;;
-	c)    $0 bash bsdtar cmark entr foot htop iproute2 jo jq less lua minisign mksh rc rsync samurai scdoc tmux zstd ;;
+	c)    $0 bash bsdtar cmark entr foot htop iproute2 jo jq less lua minisign mksh rc rsync samurai scdoc tmux wiggle zstd ;;
 	go)   $0 amfora chezmoi jump fzf gomplate ht mc micro rclone restic scc serve ;;
 	rust) $0 bat exa fd handlr rg rsign sk xh ;;
 
@@ -82,6 +82,7 @@ for i; do
 	scdoc)    cc -r https://git.sr.ht/~sircmpwn/scdoc @m scdoc --repotype=.git @o mimalloc ;;
 	tmux)     cc -r https://github.com/tmux/tmux.git @@apk libevent-dev \
 				@o autogen.sh @o configure @b tmux @m all @o mimalloc ;;
+	wiggle)   cc -r https://github.com/neilbrown/wiggle.git -b wiggle ;;
 	zstd)     cc -r https://github.com/facebook/zstd.git @@apk lz4-dev @@apk xz-dev @m zstd @o mimalloc ;;
 
 	# go
