@@ -22,7 +22,7 @@ cd "$pdir"
 
 export CFLAGS='-Os'
 export CXXFLAGS='-static -Os'
-export LDFLAGS='-all-static -static'
+export LDFLAGS='-static'
 
 # declarative extensions!
 
@@ -40,21 +40,29 @@ fi
 
 # - libtoolize
 if has_opt libtoolize; then
+	o+=(all_static)
 	libtoolize -cfi
 fi
 
 # - autoreconf
 if has_opt autoreconf; then
+	o+=(all_static)
 	autoreconf -fi
 fi
 
 # - autogen.sh
 if has_opt autogen.sh; then
+	o+=(all_static)
 	./autogen.sh
 fi
 
 if has_opt mimalloc; then
 	export LDFLAGS="$LDFLAGS -lc++ /lib/mimalloc.o"
+fi
+
+# used internally
+if has_opt all_static; then
+	export LDFLAGS="$LDFLAGS -all-static"
 fi
 
 if let ${#configure[@]} || has_opt configure; then
