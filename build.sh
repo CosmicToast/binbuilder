@@ -48,7 +48,7 @@ for i; do
 	
 	# bundles
 	all)  $0 c go rust ;;
-	c)    $0 bash bsdtar cmark entr foot htop iproute2 jo jq less lua minisign mksh rc rsync samurai scdoc tmux wiggle zstd ;;
+	c)    $0 bash bsdtar cmark entr foot htop iproute2 jo jq less lua minisign mksh mold rc rsync samurai scdoc tmux wiggle zstd ;;
 	go)   $0 amfora chezmoi jump fzf gomplate ht mc micro rclone restic scc serve ;;
 	rust) $0 bat exa fd handlr rg rsign sk xh ;;
 
@@ -74,6 +74,7 @@ for i; do
 	minisign) cc -r https://github.com/jedisct1/minisign.git @@apk libsodium-dev \
 				@@cmake -DBUILD_STATIC_EXECUTABLES=1 -m all -b minisign ;;
 	mksh)     cc -r https://github.com/MirBSD/mksh.git @o u @o mimalloc               ;;
+	mold)     cc -r https://github.com/rui314/mold.git -m mold -b mold @o u ;;
 	rc)       cc -r https://github.com/muennich/rc.git @o u @b rc @o mimalloc         ;;
 	rsync)    cc -r https://github.com/WayneD/rsync.git @o autoreconf @m reconfigure @m rsync @b rsync \
 			   @@apk acl-dev @@apk lz4-dev @@apk zlib-dev @@apk zstd-dev @o mimalloc \
