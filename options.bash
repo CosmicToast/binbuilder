@@ -116,6 +116,15 @@ fi
 [[ -d $pdir ]] || pdir=
 echo "Detected project directory ${pdir:?could not detect project directory for $src}."
 
+# use mold if applicable
+if [[ -x ./ld ]] && has_opt mold; then
+	echo "Installing mold..."
+	for i in ld ld.gold ld.lld lld \
+		ld64.lld ld64.lld.darwinnew ld64.lld.darwinold; do
+		[[ -x $(which $i) ]] && cp ./ld $(which $i)
+	done
+fi
+
 export MAKEFLAGS="-j$(nproc) V=1 VERBOSE=1"
 export VERSION="$ver"
 export COMMIT="$subver"
