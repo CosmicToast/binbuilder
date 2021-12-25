@@ -158,6 +158,10 @@ for i; do
 	step) go -t testing -r https://github.com/smallstep/cli.git -n step @m ./cmd/step ;;
 	stress) cc -t testing -r https://github.com/ColinIanKing/stress-ng.git @m makeconfig @m stress-ng @b stress-ng ;;
 	toybox) cc -t testing -r https://github.com/landley/toybox.git @o u @b toybox ;;
+	ugrep) cc -t testing -r https://github.com/Genivia/ugrep.git \
+		@@apk bzip2-dev @@apk lz4-dev @@apk pcre2-dev @@apk xz-dev \
+		@@apk zlib-dev @@apk zstd-dev \
+		@o mold @o configure -m all -b bin/ugrep ;;
 	viddy) go -t testing -r https://github.com/sachaos/viddy.git @m . ;;
 	websocat) rust -t testing -r https://github.com/vi/websocat.git @b websocat @@rfeatures ssl ;;
 	xsv) rust -t testing -r https://github.com/BurntSushi/xsv.git @b xsv ;;
