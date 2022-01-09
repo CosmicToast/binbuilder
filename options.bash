@@ -75,8 +75,6 @@ cgit() {
 }
 
 ctar() {
-	apk add bsdtar # TODO: build into images
-
 	declare -g subver ver
 	declare -l cachef
 	cachef="$cache"/tar/"$(basename $1)"
@@ -102,6 +100,7 @@ cclone() {
 
 dir="$PWD"
 cache="$dir"/cache
+patch="$dir"/patch
 cclone "$src"
 
 # the project directory wasn't set
@@ -124,6 +123,12 @@ if [[ -x ./ld ]] && has_opt mold; then
 		[[ -x $(which $i) ]] && cp ./ld $(which $i)
 	done
 fi
+
+# apply patches
+[[ -d "$patch/$name" ]] && for p in "$patch/$name"/*.patch; do
+	echo "Applying patch $(basename $p .patch)".
+	patch -d "$pdir" -p1 <"$p"
+done
 
 export MAKEFLAGS="-j$(nproc) V=1 VERBOSE=1"
 export VERSION="$ver"
