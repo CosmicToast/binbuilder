@@ -1,0 +1,136 @@
+diff --git a/src/module/repl.wren b/src/module/repl.wren
+index 81d3418..ae07998 100644
+--- a/src/module/repl.wren
++++ b/src/module/repl.wren
+@@ -349,9 +349,7 @@ class AnsiRepl is Repl {
+     System.write("\x1b[2K")
+ 
+     // Show the prompt at the beginning of the line.
+-    System.write(Color.gray)
+     System.write("\r> ")
+-    System.write(Color.none)
+ 
+     // Syntax highlight the line.
+     for (token in lex(line, true)) {
+@@ -365,7 +363,7 @@ class AnsiRepl is Repl {
+     if (showCompletion) {
+       var completion = getCompletion()
+       if (completion != null) {
+-        System.write("%(Color.gray)%(completion)%(Color.none)")
++        System.write("%(completion)")
+       }
+     }
+ 
+@@ -378,7 +376,7 @@ class AnsiRepl is Repl {
+     // TODO: Syntax color based on type? It might be nice to distinguish
+     // between string results versus stringified results. Otherwise, the
+     // user can't tell the difference between `true` and "true".
+-    System.print("%(Color.brightWhite)%(value)%(Color.none)")
++    System.print("%(value)")
+   }
+ 
+   showRuntimeError(message) {
+@@ -604,17 +602,17 @@ var KEYWORDS = {
+ }
+ 
+ var TOKEN_COLORS = {
+-  Token.leftParen: Color.gray,
+-  Token.rightParen: Color.gray,
+-  Token.leftBracket: Color.gray,
+-  Token.rightBracket: Color.gray,
+-  Token.leftBrace: Color.gray,
+-  Token.rightBrace: Color.gray,
+-  Token.colon: Color.gray,
+-  Token.dot: Color.gray,
++  Token.leftParen: Color.none,
++  Token.rightParen: Color.none,
++  Token.leftBracket: Color.none,
++  Token.rightBracket: Color.none,
++  Token.leftBrace: Color.none,
++  Token.rightBrace: Color.none,
++  Token.colon: Color.none,
++  Token.dot: Color.none,
+   Token.dotDot: Color.none,
+   Token.dotDotDot: Color.none,
+-  Token.comma: Color.gray,
++  Token.comma: Color.none,
+   Token.star: Color.none,
+   Token.slash: Color.none,
+   Token.percent: Color.none,
+@@ -664,7 +662,7 @@ var TOKEN_COLORS = {
+   Token.number: Color.magenta,
+   Token.string: Color.yellow,
+   Token.interpolation: Color.yellow,
+-  Token.comment: Color.gray,
++  Token.comment: Color.none,
+   Token.whitespace: Color.none,
+   Token.line: Color.none,
+   Token.error: Color.red,
+diff --git a/src/module/repl.wren.inc b/src/module/repl.wren.inc
+index f84e1de..ebd3799 100644
+--- a/src/module/repl.wren.inc
++++ b/src/module/repl.wren.inc
+@@ -353,9 +353,7 @@ static const char* replModuleSource =
+ "    System.write(\"\\x1b[2K\")\n"
+ "\n"
+ "    // Show the prompt at the beginning of the line.\n"
+-"    System.write(Color.gray)\n"
+ "    System.write(\"\\r> \")\n"
+-"    System.write(Color.none)\n"
+ "\n"
+ "    // Syntax highlight the line.\n"
+ "    for (token in lex(line, true)) {\n"
+@@ -369,7 +367,7 @@ static const char* replModuleSource =
+ "    if (showCompletion) {\n"
+ "      var completion = getCompletion()\n"
+ "      if (completion != null) {\n"
+-"        System.write(\"%(Color.gray)%(completion)%(Color.none)\")\n"
++"        System.write(\"%(completion)\")\n"
+ "      }\n"
+ "    }\n"
+ "\n"
+@@ -382,7 +380,7 @@ static const char* replModuleSource =
+ "    // TODO: Syntax color based on type? It might be nice to distinguish\n"
+ "    // between string results versus stringified results. Otherwise, the\n"
+ "    // user can't tell the difference between `true` and \"true\".\n"
+-"    System.print(\"%(Color.brightWhite)%(value)%(Color.none)\")\n"
++"    System.print(\"%(value)\")\n"
+ "  }\n"
+ "\n"
+ "  showRuntimeError(message) {\n"
+@@ -608,17 +606,17 @@ static const char* replModuleSource =
+ "}\n"
+ "\n"
+ "var TOKEN_COLORS = {\n"
+-"  Token.leftParen: Color.gray,\n"
+-"  Token.rightParen: Color.gray,\n"
+-"  Token.leftBracket: Color.gray,\n"
+-"  Token.rightBracket: Color.gray,\n"
+-"  Token.leftBrace: Color.gray,\n"
+-"  Token.rightBrace: Color.gray,\n"
+-"  Token.colon: Color.gray,\n"
+-"  Token.dot: Color.gray,\n"
++"  Token.leftParen: Color.none,\n"
++"  Token.rightParen: Color.none,\n"
++"  Token.leftBracket: Color.none,\n"
++"  Token.rightBracket: Color.none,\n"
++"  Token.leftBrace: Color.none,\n"
++"  Token.rightBrace: Color.none,\n"
++"  Token.colon: Color.none,\n"
++"  Token.dot: Color.none,\n"
+ "  Token.dotDot: Color.none,\n"
+ "  Token.dotDotDot: Color.none,\n"
+-"  Token.comma: Color.gray,\n"
++"  Token.comma: Color.none,\n"
+ "  Token.star: Color.none,\n"
+ "  Token.slash: Color.none,\n"
+ "  Token.percent: Color.none,\n"
+@@ -668,7 +666,7 @@ static const char* replModuleSource =
+ "  Token.number: Color.magenta,\n"
+ "  Token.string: Color.yellow,\n"
+ "  Token.interpolation: Color.yellow,\n"
+-"  Token.comment: Color.gray,\n"
++"  Token.comment: Color.none,\n"
+ "  Token.whitespace: Color.none,\n"
+ "  Token.line: Color.none,\n"
+ "  Token.error: Color.red,\n"

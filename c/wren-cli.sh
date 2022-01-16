@@ -1,0 +1,1 @@
+make -C projects/make

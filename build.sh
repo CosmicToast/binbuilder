@@ -164,6 +164,7 @@ for i; do
 		@o mold @o configure -m all -b bin/ugrep ;;
 	viddy) go -t testing -r https://github.com/sachaos/viddy.git @m . ;;
 	websocat) rust -t testing -r https://github.com/vi/websocat.git @b websocat @@rfeatures ssl ;;
+	wren) cc -t testing -r https://github.com/wren-lang/wren-cli.git @o u @o mimalloc @@apk libuv-dev @b bin/wren_cli ;;
 	xsv) rust -t testing -r https://github.com/BurntSushi/xsv.git @b xsv ;;
 
 	# Server
