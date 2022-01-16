@@ -56,35 +56,35 @@ for i; do
 	bash)     cc -r https://git.savannah.gnu.org/git/bash.git @o u @o dumb_curses \
 				@@configure --with-curses @@configure --disable-nls @@configure --enable-readline \
 				@@configure --without-bash-malloc @@configure --with-installed-readline \
-				@@configure --enable-static-link @m all @b bash @o mimalloc ;;
-	cmark)    cc -r https://github.com/commonmark/cmark.git @o mimalloc ;;
-	entr)     cc -r https://github.com/eradman/entr.git @o configure @m entr @o mimalloc ;;
-	foot)     cc -r https://codeberg.org/dnkl/foot.git @o u @b foot @b footclient @o mimalloc ;; # TODO: xkbcommon
-	htop)     cc -r https://github.com/htop-dev/htop.git @o autogen.sh @o configure @m all @b htop @o mimalloc ;;
-	iproute2) cc -r git://git.kernel.org/pub/scm/network/iproute2/iproute2.git @b ip/ip @b misc/ss ;;
-	jo)       cc -r https://github.com/jpmens/jo.git @o autoreconf @o configure -m jo -b jo @o mimalloc ;;
-	jq)       cc -r https://github.com/stedolan/jq.git @o git_submodules @o autoreconf @o mimalloc \
+				@@configure --enable-static-link @m all @b bash @o mimalloc @o mold ;;
+	cmark)    cc -r https://github.com/commonmark/cmark.git @o mimalloc @o mold ;;
+	entr)     cc -r https://github.com/eradman/entr.git @o configure @m entr @o mimalloc @o mold ;;
+	foot)     cc -r https://codeberg.org/dnkl/foot.git @o u @b foot @b footclient @o mimalloc @o mold ;; # TODO: xkbcommon
+	htop)     cc -r https://github.com/htop-dev/htop.git @o autogen.sh @o configure @m all @b htop @o mimalloc @o mold ;;
+	iproute2) cc -r git://git.kernel.org/pub/scm/network/iproute2/iproute2.git @b ip/ip @b misc/ss @o mold ;;
+	jo)       cc -r https://github.com/jpmens/jo.git @o autoreconf @o configure -m jo -b jo @o mimalloc @o mold ;;
+	jq)       cc -r https://github.com/stedolan/jq.git @o git_submodules @o autoreconf @o mimalloc @o mold \
 				@@configure --with-onigurama=builtin @@configure --disable-maintainer-mode @m all @b jq ;;
-	less)     cc -r https://github.com/gwsw/less.git @o autoreconf @@configure --with-regex=pcre2 @b less @o mimalloc ;;
-	bsdtar)   cc -r https://github.com/libarchive/libarchive.git @o autoreconf @m bsdtar \
+	less)     cc -r https://github.com/gwsw/less.git @o autoreconf @@configure --with-regex=pcre2 @b less @o mimalloc @o mold ;;
+	bsdtar)   cc -r https://github.com/libarchive/libarchive.git @o autoreconf @m bsdtar @o mold \
 				@@apk xz-dev @@apk bzip2-dev @@apk zlib-dev @@apk libb2-dev @@apk lz4-dev @@apk zstd-dev \
 				@@apk xz-dev @@apk lzo-dev @@apk nettle-dev @@apk libxml2-dev @@apk expat-dev @o mimalloc \
 				@@configure --enable-bsdtar=static @@configure --disable-bsdcat @@configure --disable-bsdcpio ;;
-	lua)      cc -r https://github.com/lua/lua.git @o u @b lua @o mimalloc ;;
+	lua)      cc -r https://github.com/lua/lua.git @o u @b lua @o mimalloc @o mold ;;
 	minisign) cc -r https://github.com/jedisct1/minisign.git @@apk libsodium-dev \
-				@@cmake -DBUILD_STATIC_EXECUTABLES=1 -m all -b minisign ;;
-	mksh)     cc -r https://github.com/MirBSD/mksh.git @o u @o mimalloc               ;;
+				@@cmake -DBUILD_STATIC_EXECUTABLES=1 -m all -b minisign @o mold ;;
+	mksh)     cc -r https://github.com/MirBSD/mksh.git @o u @o mimalloc @o mold ;;
 	mold)     cc -r https://github.com/rui314/mold.git -m mold -b mold @o u ;;
-	rc)       cc -r https://github.com/muennich/rc.git @o u @b rc @o mimalloc         ;;
+	rc)       cc -r https://github.com/muennich/rc.git @o u @b rc @o mimalloc @o mold ;;
 	rsync)    cc -r https://github.com/WayneD/rsync.git @o autoreconf @m reconfigure @m rsync @b rsync \
-			   @@apk acl-dev @@apk lz4-dev @@apk zlib-dev @@apk zstd-dev @o mimalloc \
+			   @@apk acl-dev @@apk lz4-dev @@apk zlib-dev @@apk zstd-dev @o mimalloc @o mold \
 			   @@configure --disable-xxhash @@configure --disable-md2man ;;
-	samurai)  cc -r https://github.com/michaelforney/samurai.git @m samu @o mimalloc  ;;
-	scdoc)    cc -r https://git.sr.ht/~sircmpwn/scdoc @m scdoc --repotype=.git @o mimalloc ;;
+	samurai)  cc -r https://github.com/michaelforney/samurai.git @m samu @o mimalloc @o mold ;;
+	scdoc)    cc -r https://git.sr.ht/~sircmpwn/scdoc @m scdoc --repotype=.git @o mimalloc @o mold ;;
 	tmux)     cc -r https://github.com/tmux/tmux.git @@apk libevent-dev \
-				@o autogen.sh @o configure @b tmux @m all @o mimalloc ;;
-	wiggle)   cc -r https://github.com/neilbrown/wiggle.git -b wiggle ;;
-	zstd)     cc -r https://github.com/facebook/zstd.git @@apk lz4-dev @@apk xz-dev @m zstd @o mimalloc ;;
+				@o autogen.sh @o configure @b tmux @m all @o mimalloc @o mold ;;
+	wiggle)   cc -r https://github.com/neilbrown/wiggle.git -b wiggle @o mimalloc @o mold ;;
+	zstd)     cc -r https://github.com/facebook/zstd.git @@apk lz4-dev @@apk xz-dev @m zstd @o mimalloc @o mold ;;
 
 	# go
 	chezmoi) go -r https://github.com/twpayne/chezmoi.git   @m .            ;;
