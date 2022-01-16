@@ -3,7 +3,8 @@
 # install libs
 apk add pixman-dev wayland-dev wayland-protocols wayland-protocols-dev libxkbcommon-dev fontconfig-dev \
 	tllist fcft-dev utf8proc-dev \
-	libffi-dev bzip2-dev expat-dev
+	libffi-dev bzip2-dev expat-dev \
+	python
 
 CC=clang
 CFLAGS="$CFLAGS -DFOOT_DEFAULT_TERM=\"foot\" -DFOOT_GRAPHEME_CLUSTERING=1 -DFOOT_IME_ENABLED=1 -DNDEBUG"
@@ -23,6 +24,7 @@ for f in $PROTS; do
 	"$SCANNER" client-header "$PROTDIR/$f" "$out.h"
 	"$SCANNER" private-code "$PROTDIR/$f" "$out.c"
 done
+python scripts/generate-builtin-terminfo.py '@default_terminfo@' foot.info foot foot-terminfo.h
 
 # compile
 find . -name '*.c' -exec "$CC" $CFLAGS '{}' -o '{}.o' \;
