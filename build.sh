@@ -176,6 +176,7 @@ for i; do
 			  @@configure --enable-static @b dbclient @b dropbear @b dropbearconvert @b dropbearkey ;;
 	echoip) go -t server -r https://github.com/mpolden/echoip.git @m ./cmd/echoip ;;
 	gobgp) go -t server -r https://github.com/osrg/gobgp.git @m ./cmd/gobgp @m ./cmd/gobgpd ;;
+	maddy) cc -t server -r https://github.com/foxcpp/maddy.git @o mold @b build/maddy @b build/maddyctl ;;
 	miniflux) go -t server -r https://github.com/miniflux/v2.git -m ./ -b miniflux.app -n miniflux @@bnames miniflux \
 			  --versionvar miniflux.app/version.Version --commitvar miniflux.app/version.Commit --buildvar miniflux.app/version.BuildDate ;;
 	minio) go -t server -r https://github.com/minio/minio.git @m . ;;
