@@ -78,7 +78,7 @@ parse() {
 			fi
 
 			__verify "$arg" "$val"
-			eval $arg="'$val'"
+			printf -v "$arg" "$val"
 		;;
 		# short option
 		-*)
@@ -105,7 +105,7 @@ parse() {
 			fi
 
 			__verify "$arg" "$val"
-			eval $arg="'$val'"
+			printf -v "$arg" "$val"
 		;;
 		# long array
 		@@*)
