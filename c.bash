@@ -84,7 +84,6 @@ fi
 
 # scripts may set multiple bins
 for f in "${bin[@]}"; do
-	strip "$f"
 	handlebin "$f"
 done
 clean

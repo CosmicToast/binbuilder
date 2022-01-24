@@ -40,13 +40,11 @@ fi
 if ! let "${#bin[@]}"; then
 	bin="$(find target -type f -executable)"
 	for bb in "$bin"; do
-		strip "$bb"
 		handlebin "$bb"
 	done
 else
 	for bb in "${bin[@]}"; do
 		p="$(find target -type f -executable -name $bb)"
-		strip "$p"
 		handlebin "$p"
 	done
 fi
