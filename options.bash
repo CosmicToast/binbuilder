@@ -14,6 +14,7 @@
 # -s|--subver: subversion; see --ver comment
 
 # options.bash recognizes the following opts:
+# * s | nostrip: do not strip binary
 # * u | noupx: do not compress
 # builders may define their own, and should use has_opt
 
@@ -138,7 +139,8 @@ export BUILDDATE=$(TZ=UTC date +%x)
 
 # util
 handlebin() {
-	has_opt u noupx || "$dir"/upx "$1"
+	if ! has_opt s nostrip; then echo Stripping...; strip "$1"; fi
+	if ! has_opt u noupx;   then "$dir"/upx "$1"; fi
 	cp "$1" "$dir"/bin/"$type"/"$(basename $1)@$ver"
 }
 clean() {
