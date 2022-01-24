@@ -7,6 +7,12 @@
 common() {
 	# disable upx if it's missing
 	[ -f "$PWD/upx" ] || set -- "$@" @o u
+
+	# import options from env
+	for opt in $BINB_OPTS; do
+		set -- "$@" @o "$opt"
+	done
+	
 	# allow picking between docker and local runners
 	case "$RUNNER" in
 	docker) container docker "$@" ;;
