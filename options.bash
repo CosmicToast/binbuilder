@@ -139,7 +139,7 @@ export BUILDDATE=$(TZ=UTC date +%x)
 
 # util
 handlebin() {
-	if ! has_opt s nostrip; then echo Stripping...; strip "$1"; fi
+	if ! has_opt s nostrip; then echo Stripping...; llvm-strip "$1"; fi
 	if ! has_opt u noupx;   then "$dir"/upx "$1"; fi
 	cp "$1" "$dir"/bin/"$type"/"$(basename $1)@$ver"
 }
