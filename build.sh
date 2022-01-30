@@ -80,7 +80,7 @@ for i; do
 	minisign) cc -r https://github.com/jedisct1/minisign.git @@apk libsodium-dev \
 				@@cmake -DBUILD_STATIC_EXECUTABLES=1 -m all -b minisign @o mold ;;
 	mksh)     cc -r https://github.com/MirBSD/mksh.git @o u @o mimalloc @o mold ;;
-	mold)     cc -r https://github.com/rui314/mold.git -m mold -b mold @o u ;;
+	mold)     cc -r https://github.com/rui314/mold.git -m mold -b mold @o u @o mold ;;
 	rc)       cc -r https://github.com/muennich/rc.git @o u @b rc @o mimalloc @o mold ;;
 	rsync)    cc -r https://github.com/WayneD/rsync.git @o autoreconf @m reconfigure @m rsync @b rsync \
 			   @@apk acl-dev @@apk lz4-dev @@apk zlib-dev @@apk zstd-dev @o mimalloc @o mold \
@@ -108,7 +108,7 @@ for i; do
 	micro) go -r https://github.com/zyedidia/micro.git @m build-all @b micro ;;
 
 	# rust
-	bat)    rust -r https://github.com/sharkdp/bat.git        @b bat   ;;
+	bat)    rust -r https://github.com/sharkdp/bat.git        @b bat @o mold  ;;
 	exa)    rust -r https://github.com/ogham/exa.git          @b exa   ;;
 	fd)     rust -r https://github.com/sharkdp/fd.git         @b fd    ;;
 	handlr) rust -r https://github.com/chmln/handlr.git @b handlr ;;
@@ -142,6 +142,7 @@ for i; do
 	fdupes) cc -t testing -r https://github.com/adrianlopezroche/fdupes.git @o autoreconf @o configure @m fdupes @o mimalloc ;;
 	ffsend) rust -t testing -r https://github.com/timvisee/ffsend.git @b ffsend ;;
 	fio) cc -t testing -r git://git.kernel.dk/fio.git @@configure --build-static @b fio @m fio ;;
+	fossil) cc -t testing -r https://fossil-scm.org.fossil @@configure --static @m all @b fossil -n fossil @o mold ;;
 	gdu) go -t testing -r https://github.com/dundee/gdu.git @m ./cmd/gdu ;;
 	gotop) go -t testing -r https://github.com/xxxserxxx/gotop.git @m ./cmd/gotop ;;
 	hyperfine) rust -t testing -r https://github.com/sharkdp/hyperfine.git @b hyperfine ;;
@@ -151,6 +152,7 @@ for i; do
 	k6) go -t testing -r https://github.com/k6io/k6.git -m . ;;
 	monolith) rust -t testing -r https://github.com/Y2Z/monolith.git @b monolith ;;
 	mrsh) cc -t testing -r https://github.com/emersion/mrsh.git @@configure --static @m mrsh @b mrsh @o u @o mimalloc ;;
+	murex) go -t testing -r https://github.com/lmorg/murex.git -m . ;;
 	nmap) cc -t testing -r https://github.com/nmap/nmap.git @b ncat/ncat @o mimalloc ;;
 	pastel) rust -t testing -r https://github.com/sharkdp/pastel.git @b pastel ;;
 	procs) rust -t testing -r https://github.com/dalance/procs.git @b procs ;;
