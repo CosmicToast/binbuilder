@@ -28,7 +28,7 @@ declare -n src=repo
 . ./args.bash
 
 # validation
-[[ -x ./upx ]] || o+=('noupx')
+[[ -x ./utils/upx ]] || o+=('noupx')
 [[ -z "$src" ]] && exit 1
 
 # has_opt utility, operates on @o
@@ -56,8 +56,16 @@ fi
 _git() {
 	command git "$@"
 } >&2
+__fossil() {
+	"$dir"/utils/fossil --user root "$@"
+}
+_fossil() {
+	__fossil "$@"
+} >&2
 
 # cloners
+
+# sets name, subver, ver
 cgit() {
 	declare -g name subver ver
 	declare -l cacher
@@ -75,6 +83,27 @@ cgit() {
 	: ${subver:="$(git rev-parse --verify HEAD)"}
 }
 
+# sets ver
+# needs name
+cfossil() {
+	declare -g name subver ver
+	declare -l cachef
+	# the .fossil is fake, and will never be present in real fossil repositories
+	set -- "${1%.fossil}"
+	: ${name:="$(basename $1)"}
+	cachef="$cache"/fossil/"$name".fossil
+	if [[ ! -f "$cachef" ]]; then
+		mkdir -p "$cache"/fossil
+		_fossil clone "$1" "$cachef"
+	else
+		_fossil pull "$1" -R "$cachef"
+	fi
+
+	_fossil open "$cachef" --workdir "$name"
+	: ${ver:="$(cd $name && __fossil info | awk '/checkout/ { print $2 }')"}
+}
+
+# needs ver, name
 ctar() {
 	declare -g subver ver
 	declare -l cachef
@@ -93,6 +122,7 @@ ctar() {
 cclone() {
 	[[ -v repotype ]] || repotype=$1
 	case "$repotype" in
+	*.fossil) cfossil "$@" ;;
 	*.git) cgit "$@" ;;
 	http*.tar*) ctar "$@" ;;
 	*) exit 2 ;; # TODO: error
@@ -117,11 +147,11 @@ fi
 echo "Detected project directory ${pdir:?could not detect project directory for $src}."
 
 # use mold if applicable
-if [[ -x ./ld ]] && has_opt mold; then
+if [[ -x "$dir"/utils/mold ]] && has_opt mold; then
 	echo "Installing mold..."
 	for i in ld ld.gold ld.lld lld \
 		ld64.lld ld64.lld.darwinnew ld64.lld.darwinold; do
-		[[ -x $(which $i) ]] && cp ./ld $(which $i)
+		[[ -x $(which $i) ]] && cp "$dir"/utils/mold $(which $i)
 	done
 fi
 
@@ -140,7 +170,7 @@ export BUILDDATE=$(TZ=UTC date +%x)
 # util
 handlebin() {
 	if ! has_opt s nostrip; then echo Stripping...; llvm-strip "$1"; fi
-	if ! has_opt u noupx;   then "$dir"/upx "$1"; fi
+	if ! has_opt u noupx;   then "$dir"/utils/upx "$1"; fi
 	cp "$1" "$dir"/bin/"$type"/"$(basename $1)@$ver"
 }
 clean() {

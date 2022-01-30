@@ -6,7 +6,7 @@
 # utils
 common() {
 	# disable upx if it's missing
-	[ -f "$PWD/upx" ] || set -- "$@" @o u
+	[ -f "$PWD/utils/upx" ] || set -- "$@" @o u
 
 	# import options from env
 	for opt in $BINB_OPTS; do
