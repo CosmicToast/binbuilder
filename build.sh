@@ -109,7 +109,7 @@ for i; do
 
 	# rust
 	bat)    rust -r https://github.com/sharkdp/bat.git        @b bat @o mold  ;;
-	exa)    rust -r https://github.com/ogham/exa.git          @b exa   ;;
+	exa)    rust -r https://github.com/ogham/exa.git          @b exa @o mold  ;;
 	fd)     rust -r https://github.com/sharkdp/fd.git         @b fd    ;;
 	handlr) rust -r https://github.com/chmln/handlr.git @b handlr ;;
 	rg)     rust -r https://github.com/BurntSushi/ripgrep.git @b rg    ;;
