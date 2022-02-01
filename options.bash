@@ -5,6 +5,7 @@
 # @@apk: for apk-based builders
 
 # @b|@@bin: binary name
+# @@env: environment overrides
 # -m|--mod: module for make/go/similar; used by multiple
 # @o|@@opts: options, we have a helper function
 # -r|--repo|--src: the source to fetch
@@ -41,6 +42,15 @@ has_opt() {
 	done
 	return 1
 }
+
+# environment setting
+for i in "${env[@]}"; do
+	# the format is ENV=VALUE
+	# do not use ""s, we will be assigning with printf
+	printf "Setting %s to [%s]...\n" "${i%%=*}" "${i#*=}"
+	printf -v "${i%%=*}" "%s" "${i#*=}"
+	export "${i%%=*}"
+done
 
 # common deps
 . /etc/os-release
