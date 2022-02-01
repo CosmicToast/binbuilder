@@ -185,6 +185,10 @@ for i; do
 			  @@configure --enable-static @b dbclient @b dropbear @b dropbearconvert @b dropbearkey ;;
 	echoip) go -t server -r https://github.com/mpolden/echoip.git @m ./cmd/echoip ;;
 	gobgp) go -t server -r https://github.com/osrg/gobgp.git @m ./cmd/gobgp @m ./cmd/gobgpd ;;
+	gitea) go -t server -r https://github.com/go-gitea/gitea.git @m frontend @m go-check @m generate @m gitea -b gitea \
+		@@apk sqlite-dev @@apk nodejs @@apk musl-dev @@apk libcxx-dev \
+		@@env 'LDFLAGS=-extldflags=-static' @@env 'TAGS=bindata sqlite sqlite_unlock_notify' \
+		@o mold @o cgo @o nostrip ;; # stripping causes SEGV
 	maddy) cc -t server -r https://github.com/foxcpp/maddy.git @o mold @b build/maddy @b build/maddyctl ;;
 	miniflux) go -t server -r https://github.com/miniflux/v2.git -m ./ -b miniflux.app -n miniflux @@bnames miniflux \
 			  --versionvar miniflux.app/version.Version --commitvar miniflux.app/version.Commit --buildvar miniflux.app/version.BuildDate ;;
