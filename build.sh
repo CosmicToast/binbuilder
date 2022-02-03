@@ -133,6 +133,7 @@ for i; do
 	age) go -t testing -r https://github.com/FiloSottile/age.git @m ./cmd/age @m ./cmd/age-keygen ;;
 	bottom) rust -t testing -r https://github.com/ClementTsang/bottom.git @b btm ;;
 	btop) cc -t testing -r https://github.com/aristocratos/btop.git -b bin/btop ;;
+	croc) go -t testing -r https://github.com/schollz/croc.git -m . ;;
 	drill) cc -t testing -r https://github.com/NLnetLabs/ldns.git @o autoreconf \
 			  @o libtoolize @@configure --with-drill @m all @b drill/drill @o mimalloc ;;
 	dog) rust -t testing -r https://github.com/ogham/dog.git @b dog @@rfeatures with_idna @o nofeat ;;
