@@ -151,6 +151,7 @@ for i; do
 	janet) cc -t testing -r https://github.com/janet-lang/janet.git -m all -b build/janet @o mimalloc ;;
 	kalker) rust -t testing -r https://github.com/PaddiM8/kalker.git -b kalker ;;
 	k6) go -t testing -r https://github.com/k6io/k6.git -m . ;;
+	miniserve) rust -t testing -r https://github.com/svenstaro/miniserve.git -b miniserve ;;
 	monolith) rust -t testing -r https://github.com/Y2Z/monolith.git @b monolith ;;
 	mrsh) cc -t testing -r https://github.com/emersion/mrsh.git @@configure --static @m mrsh @b mrsh @o u @o mimalloc ;;
 	murex) go -t testing -r https://github.com/lmorg/murex.git -m . ;;
